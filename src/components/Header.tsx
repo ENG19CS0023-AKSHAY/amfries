@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useI18n, type Lang } from "@/lib/i18n";
+import mainLogo from "@/assets/Amfries_logo.jpg";
 
 export function Header() {
   const { t, lang, setLang } = useI18n();
@@ -16,16 +17,22 @@ export function Header() {
     { to: "/franchise", label: t("nav.franchise") },
   ] as const;
 
-  const flags: Record<Lang, string> = { en: "🇬🇧", nl: "🇳🇱" };
+  const flags: Record<Lang, string> = { en: "🇬🇧", nl: "nl" };
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = open ? "hidden" : "";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-brand text-brand-foreground">
-      <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-4 md:px-8">
-        <Link to="/" className="flex shrink-0 flex-col items-center leading-none">
-          <span className="font-display text-2xl font-extrabold tracking-widest md:text-3xl">AMFRIES</span>
-          <span className="mt-0.5 text-[0.6rem] tracking-[0.3em] opacity-80 md:text-[0.65rem]">
-            • {t("footer.tagline").toUpperCase()} •
-          </span>
+    <header className="sticky top-0 z-[70] bg-[#ffffff] text-[#f63d16]">
+      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 md:px-8 lg:grid-cols-[auto_1fr_auto] grid-cols-1 items-center lg:justify-start justify-center relative">
+        <Link to="/" className="flex shrink-0 items-start leading-none -ml-2 lg:static absolute left-1/2 -translate-x-1/2 lg:translate-x-0">
+          <img src={mainLogo} alt="Amfries" className="h-8 md:h-12 w-auto" />
         </Link>
 
         <nav className="hidden min-w-0 items-center justify-end gap-6 lg:flex">
@@ -33,7 +40,7 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className="font-display text-sm font-semibold uppercase tracking-wider transition hover:text-accent-yellow [&.active]:text-accent-yellow [&.active]:underline [&.active]:underline-offset-8"
+              className="font-display text-sm font-semibold uppercase tracking-wider transition hover:text-[#f63d16] [&.active]:text-[#f63d16] [&.active]:underline [&.active]:underline-offset-8"
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -41,35 +48,35 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 absolute right-4 top-1/2 -translate-y-1/2 lg:relative lg:translate-y-0 lg:right-auto">
           <div className="relative">
-            <button
+            {/* <button
               onClick={() => setLangOpen((v) => !v)}
-              className="flex items-center gap-1.5 rounded-full border border-white/30 px-3 py-1.5 text-sm font-semibold uppercase transition hover:bg-white/10"
+              className="flex items-center gap-1.5 rounded-full border border-[#f63d16]/30 px-3 py-1.5 text-sm font-semibold uppercase transition hover:bg-[#f63d16]/10"
               aria-label="Language"
             >
               <span>{flags[lang]}</span>
               <span>{lang.toUpperCase()}</span>
               <ChevronDown className="h-3.5 w-3.5" />
-            </button>
-            {langOpen && (
-              <div className="animate-scale-in absolute right-0 mt-2 min-w-[8rem] overflow-hidden rounded-lg bg-white text-foreground shadow-lg">
+            </button> */}
+            {/* {langOpen && (
+              <div className="animate-scale-in absolute right-0 mt-2 min-w-[8rem] overflow-hidden rounded-lg bg-[#00000] text-[#f63d16] shadow-lg">
                 {(["en", "nl"] as Lang[]).map((l) => (
                   <button
                     key={l}
                     onClick={() => { setLang(l); setLangOpen(false); }}
-                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm font-semibold uppercase hover:bg-muted"
+                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm font-semibold uppercase hover:bg-[#f63d16]/10"
                   >
-                    <span>{flags[l]}</span> {l === "en" ? "English" : "Nederlands"}
+                    <span>{flags[l]}</span> {l === "en" ? "English" : "Kannada"}
                   </button>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
           <button
             className="lg:hidden"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Menu"
+            aria-label={open ? "Close menu" : "Open menu"}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -77,19 +84,23 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="animate-fade-up flex flex-col gap-1 border-t border-white/10 bg-brand-deep px-4 py-4 lg:hidden">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2 font-display text-base font-semibold uppercase tracking-wider hover:bg-white/10 [&.active]:text-accent-yellow"
-              activeOptions={{ exact: n.to === "/" }}
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="fixed inset-x-0 top-[32px] bottom-0 z-[60] overflow-hidden bg-[#ffffff] lg:hidden">
+          <div className="flex h-full flex-col items-center justify-center">
+            <nav className="flex w-full flex-col items-center justify-center">
+              {nav.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="w-full px-4 py-3 font-display text-2xl font-bold uppercase tracking-wider text-center text-[#f63d16] hover:bg-[#f63d16]/10 [&.active]:font-extrabold [&.active]:text-[#f63d16]"
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
       )}
     </header>
   );
