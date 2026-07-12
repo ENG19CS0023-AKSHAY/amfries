@@ -212,14 +212,14 @@ function Home() {
             {[...sauces, ...sauces].map((sauce, i) => (
               <div 
                 key={`${sauce.name}-${i}`} 
-                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-[#f63d16] rounded-2xl p-4 text-white shadow-md"
+                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-[#f63d16] rounded-[1.25rem] p-4 text-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 {/* Visual Frame */}
-                <div className="relative aspect-square w-24 overflow-hidden sm:w-28 bg-white rounded-xl shadow-sm p-1">
+                <div className="relative aspect-square w-24 overflow-hidden sm:w-28 bg-white rounded-[1rem] shadow-sm p-1">
                   <img
                     src={sauce.visual}
                     alt={sauce.name}
-                    className="h-full w-full object-contain transform hover:scale-105 transition-transform duration-200 rounded-lg"
+                    className="h-full w-full object-contain transform hover:scale-110 transition-transform duration-300 rounded-[0.75rem]"
                   />
                 </div>
 
