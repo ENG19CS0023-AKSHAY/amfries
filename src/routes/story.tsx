@@ -128,15 +128,18 @@ function StoryPage() {
           </div>
           
           {/* Video Container with Overlay */}
-          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black shadow-2xl">
-            <iframe 
-              src="https://drive.google.com/file/d/1owuMcNUWHjnP5RdTgwhaNg2ISS_Ju5CU/preview"
-              className="w-full h-full border-0"
-              allowFullScreen
-            />
-            {/* Expanded mobile overlay to prevent interaction with Google Drive header UI elements */}
-            <div className="absolute top-0 inset-x-0 h-14 md:left-auto md:right-0 md:w-20 md:h-16 cursor-default z-10"></div>
-          </div>
+          {/* Video Container with Overlay */}
+<div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black shadow-2xl">
+  <iframe
+    src="https://drive.google.com/file/d/1owuMcNUWHjnP5RdTgwhaNg2ISS_Ju5CU/preview"
+    className="w-full h-full border-0"
+    allow="autoplay"
+    allowFullScreen
+  />
+  {/* Small corner overlay to block Google Drive's menu/open-in-new-window icons,
+      without covering the centered play button on small screens */}
+  <div className="absolute top-0 right-0 w-14 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 cursor-default z-10"></div>
+</div>
         </div>
       </section>
     </>
