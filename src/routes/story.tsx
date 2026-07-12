@@ -4,6 +4,7 @@ import { Play, X } from "lucide-react";
 import heroImg from "@/assets/hero.png";
 import mascot from "@/assets/potato-mascot.png";
 import icon from "@/assets/icon.svg";
+import video from "@/assets/2.mp4";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/story")({
@@ -169,13 +170,15 @@ function StoryPage() {
             className="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <iframe
-              src="https://drive.google.com/file/d/1owuMcNUWHjnP5RdTgwhaNg2ISS_Ju5CU/preview"
-              className="h-full w-full border-0"
-              allow="autoplay"
-              sandbox="allow-scripts allow-same-origin allow-presentation"
-              allowFullScreen
-            />
+            <video
+              src={video}
+              className="h-full w-full"
+              controls
+              autoPlay
+              playsInline
+            >
+              Sorry, your browser does not support embedded videos.
+            </video>
           </div>
         </div>
       )}
