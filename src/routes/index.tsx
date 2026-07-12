@@ -51,20 +51,20 @@ function Home() {
   const [sliderVal, setSliderVal] = useState<number>(50);
   
   const sauces = [
-    { name: "Andalouse", visual: andalouse, description: "", spicy: false, signature: false },
-    { name: "Samurai", visual: samurai, description: "", spicy: true, signature: false },
-    { name: "Mango Chilli Aioli", visual: mango_chilli_aioli, description: "", spicy: false, signature: false },
-    { name: "Pink Tartare", visual: pink_tartare, description: "", spicy: false, signature: false },
-    { name: "Ketchup", visual: tomato_ketchup, description: "", spicy: false, signature: false },
-    { name: "Premium Mayo", visual: premium_mayo, description: "", spicy: false, signature: false },
-    { name: "Truffle Aioli", visual: truffle_aioli, description: "", spicy: false, signature: true },
-    { name: "Peanut Satay", visual: peanut_satay_sauce, description: "", spicy: false, signature: false },
-    { name: "Sriracha", visual: sriracha_hot_chilli_sauce, description: "", spicy: false, signature: false },
-    { name: "Chilli Garlic Mayo", visual: chilli_garlic_mayo, description: "", spicy: true, signature: false },
-    { name: "Ghost Sweet Chilli", visual: ghost_sweet_chilli, description: "", spicy: true, signature: false },
-    { name: "Cajun Mayo", visual: cajun_mayo, description: "", spicy: false, signature: false },
-    { name: "Hot & Sweet Ketchup", visual: hot_sweet_ketchup, description: "", spicy: true, signature: false },
-    { name: "Vegan Sriracha Mayo", visual: sriracha_mayo, description: "", spicy: false, signature: true },
+    { name: "Andalouse", visual: andalouse, tag: undefined as "spicy" | "signature" | undefined },
+    { name: "Samurai", visual: samurai, tag: "spicy" as const },
+    { name: "Mango Chilli Aioli", visual: mango_chilli_aioli, tag: undefined },
+    { name: "Pink Tartare", visual: pink_tartare, tag: undefined },
+    { name: "Ketchup", visual: tomato_ketchup, tag: undefined },
+    { name: "Premium Mayo", visual: premium_mayo, tag: undefined },
+    { name: "Truffle Aioli", visual: truffle_aioli, tag: "signature" as const },
+    { name: "Peanut Satay", visual: peanut_satay_sauce, tag: undefined },
+    { name: "Sriracha", visual: sriracha_hot_chilli_sauce, tag: undefined },
+    { name: "Chilli Garlic Mayo", visual: chilli_garlic_mayo, tag: "spicy" as const },
+    { name: "Ghost Sweet Chilli", visual: ghost_sweet_chilli, tag: "spicy" as const },
+    { name: "Cajun Mayo", visual: cajun_mayo, tag: undefined },
+    { name: "Hot & Sweet Ketchup", visual: hot_sweet_ketchup, tag: "spicy" as const },
+    { name: "Vegan Sriracha Mayo", visual: sriracha_mayo, tag: "signature" as const },
   ];
 
   const sizingMap: Record<SizeKey, SizeConfig> = {
@@ -112,7 +112,6 @@ function Home() {
   };
 
   const currentEmoji = sizingMap[sizeTier].moodEmoji;
-  const doubleSauces = [...sauces, ...sauces];
 
   return (
     <>
@@ -197,59 +196,65 @@ function Home() {
       <LocationsGrid />
 
       {/* Sauce Carousel Section */}
-      <section className="overflow-hidden bg-white py-16 text-slate-900 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl text-black uppercase">Choose from 10+ sauces</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-500 font-medium">
-              Pick a flavour that fits your mood, from mellow classics to fiery favourites.
-            </p>
-          </div>
+      <section id="assortment" className="overflow-hidden bg-white py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
+          <h2 className="text-3xl font-extrabold uppercase tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+            Choose from 10+ sauces
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-500">
+            Pick a flavour that fits your mood, from mellow classics to fiery favourites.
+          </p>
         </div>
 
-        <div className="relative w-full overflow-hidden">
-          <div className="animate-marquee gap-16">
-            {doubleSauces.map((sauce, idx) => (
-              <div
-                key={`${sauce.name}-${idx}`}
-                className="w-[180px] flex-shrink-0 flex flex-col items-center justify-start text-center md:w-[220px]"
+        <div className="relative mt-14 flex w-full overflow-hidden">
+          {/* Marquee Container */}
+          <div className="animate-marquee gap-8">
+            {[...sauces, ...sauces].map((sauce, i) => (
+              <div 
+                key={`${sauce.name}-${i}`} 
+                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48"
               >
-                {/* Meta Header Wrapper with Fixed Height and Relative Bounds */}
-                <div className="relative w-full h-20 flex flex-col items-center justify-center mb-2">
-                  <h3 className="text-sm font-black tracking-wider text-slate-900 uppercase line-clamp-2 px-2">
+                {/* Visual Frame - Removed circle border background & shadows */}
+                <div className="relative aspect-square w-28 overflow-hidden sm:w-32">
+                  <img
+                    src={sauce.visual}
+                    alt={sauce.name}
+                    className="h-full w-full object-contain transform hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
+
+                {/* Info Text Area Directly Below */}
+                <div className="text-center min-h-[4rem] flex flex-col items-center justify-start">
+                  <h3 className="text-sm font-bold uppercase tracking-wide text-gray-950 line-clamp-2 px-1">
                     {sauce.name}
                   </h3>
                   
-                  {/* Badges Absolute Anchored directly below text bounds */}
-                  <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 h-5">
-                    {sauce.spicy && (
-                      <span className="inline-flex items-center rounded-full bg-red-50 text-red-600 px-2 py-0.5 text-[10px] font-black tracking-wide uppercase">
-                        🌶️ Spicy
-                      </span>
-                    )}
-                    {sauce.signature && (
-                      <span className="inline-flex items-center rounded-full bg-amber-50 text-amber-700 px-2 py-0.5 text-[10px] font-black tracking-wide uppercase">
-                        ⭐ Signature
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Main Product Frame directly kissing the text block above */}
-                <div className="flex h-36 w-36 items-center justify-center overflow-visible md:h-44 md:w-44">
-                  {typeof sauce.visual === "string" && sauce.visual.length <= 4 ? (
-                    <span className="text-6xl">{sauce.visual}</span>
-                  ) : (
-                    <img 
-                      src={sauce.visual} 
-                      alt={sauce.name} 
-                      className="h-full w-full object-contain transform hover:scale-105 transition-transform duration-200"
-                    />
+                  {sauce.tag === 'spicy' && (
+                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase text-orange-500">
+                      <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
+                        <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
+                        <path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                      </svg>
+                      Spicy
+                    </span>
+                  )}
+                  
+                  {sauce.tag === 'signature' && (
+                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase text-emerald-600">
+                      <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                      Signature
+                    </span>
                   )}
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Edge Fade Gradients */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent md:w-28" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent md:w-28" />
         </div>
       </section>
 
