@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.png";
 import mascot from "@/assets/potato-mascot.png";
 import { useI18n } from "@/lib/i18n";
@@ -25,6 +25,14 @@ function StoryPage() {
         <div className="animate-fade-up relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h1 className="text-4xl md:text-7xl font-bold">Amsterdam Original</h1>
           <p className="mt-4 text-xl md:text-2xl opacity-90">A fresh, bold fries revolution in Bangalore.</p>
+          <div className="mt-5 sm:mt-6 md:mt-8">
+                      <Link 
+                        to="/menu" 
+                        className="btn-outline bg-white text-black hover:bg-black hover:text-white transition-colors duration-200"
+                      >
+                        {t("nav.menu")}
+                      </Link>
+                    </div>
         </div>
       </section>
 
