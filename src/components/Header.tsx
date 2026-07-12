@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-[70] bg-[#ffffff] text-[#000000]">
-      <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 md:px-8 lg:grid-cols-[auto_1fr_auto] grid-cols-1 items-center lg:justify-start justify-center relative">
+      <div className="mx-auto grid min-h-16 max-w-7xl gap-4 px-4 py-4 md:min-h-20 md:px-8 lg:min-h-0 lg:grid-cols-[auto_1fr_auto] grid-cols-1 items-center lg:justify-start justify-center relative">
         <Link to="/" className="flex shrink-0 items-start leading-none -ml-2 lg:static absolute left-1/2 -translate-x-1/2 lg:translate-x-0">
           <img src={mainLogo} alt="Amfries" className="h-8 md:h-12 w-auto" />
         </Link>
@@ -84,7 +84,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 top-[32px] bottom-0 z-[60] overflow-hidden bg-[#ffffff] lg:hidden">
+        <div className="fixed inset-x-0 top-16 md:top-20 bottom-0 z-[60] overflow-hidden bg-[#ffffff] lg:hidden">
           <div className="flex h-full flex-col items-center justify-center">
             <nav className="flex w-full flex-col items-center justify-center">
               {nav.map((n) => (
