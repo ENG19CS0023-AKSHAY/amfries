@@ -29,7 +29,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-[70] bg-[#ffffff] text-[#f63d16]">
+    <header className="sticky top-0 z-[70] bg-[#ffffff] text-[#000000]">
       <div className="mx-auto grid max-w-7xl gap-4 px-4 py-4 md:px-8 lg:grid-cols-[auto_1fr_auto] grid-cols-1 items-center lg:justify-start justify-center relative">
         <Link to="/" className="flex shrink-0 items-start leading-none -ml-2 lg:static absolute left-1/2 -translate-x-1/2 lg:translate-x-0">
           <img src={mainLogo} alt="Amfries" className="h-8 md:h-12 w-auto" />
@@ -40,7 +40,7 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className="font-display text-sm font-semibold uppercase tracking-wider transition hover:text-[#f63d16] [&.active]:text-[#f63d16] [&.active]:underline [&.active]:underline-offset-8"
+              className="font-display text-sm font-semibold uppercase tracking-wider transition hover:text-[#000000] [&.active]:text-[#000000] [&.active]:underline [&.active]:underline-offset-8"
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -52,7 +52,7 @@ export function Header() {
           <div className="relative">
             {/* <button
               onClick={() => setLangOpen((v) => !v)}
-              className="flex items-center gap-1.5 rounded-full border border-[#f63d16]/30 px-3 py-1.5 text-sm font-semibold uppercase transition hover:bg-[#f63d16]/10"
+              className="flex items-center gap-1.5 rounded-full border border-[#000000]/30 px-3 py-1.5 text-sm font-semibold uppercase transition hover:bg-[#000000]/10"
               aria-label="Language"
             >
               <span>{flags[lang]}</span>
@@ -60,12 +60,12 @@ export function Header() {
               <ChevronDown className="h-3.5 w-3.5" />
             </button> */}
             {/* {langOpen && (
-              <div className="animate-scale-in absolute right-0 mt-2 min-w-[8rem] overflow-hidden rounded-lg bg-[#00000] text-[#f63d16] shadow-lg">
+              <div className="animate-scale-in absolute right-0 mt-2 min-w-[8rem] overflow-hidden rounded-lg bg-[#00000] text-[#000000] shadow-lg">
                 {(["en", "nl"] as Lang[]).map((l) => (
                   <button
                     key={l}
                     onClick={() => { setLang(l); setLangOpen(false); }}
-                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm font-semibold uppercase hover:bg-[#f63d16]/10"
+                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm font-semibold uppercase hover:bg-[#000000]/10"
                   >
                     <span>{flags[l]}</span> {l === "en" ? "English" : "Kannada"}
                   </button>
@@ -92,7 +92,7 @@ export function Header() {
                   key={n.to}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className="w-full px-4 py-3 font-display text-2xl font-bold uppercase tracking-wider text-center text-[#f63d16] hover:bg-[#f63d16]/10 [&.active]:font-extrabold [&.active]:text-[#f63d16]"
+                  className="w-full px-4 py-3 font-display text-2xl font-bold uppercase tracking-wider text-center text-[#000000] hover:bg-[#000000]/10 [&.active]:font-extrabold [&.active]:text-[#000000]"
                   activeOptions={{ exact: n.to === "/" }}
                 >
                   {n.label}
