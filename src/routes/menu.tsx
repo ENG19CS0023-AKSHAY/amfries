@@ -95,10 +95,10 @@ function MenuPage() {
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">{t("menu.title")}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg opacity-90">{t("menu.subtitle")}</p>
           <div className="mt-5 sm:mt-6 md:mt-8">
-                      <Link to="/locations" className="btn-outline">
-                        {t("nav.locations")}
-                      </Link>
-                    </div>
+            <Link to="/locations" className="btn-outline">
+              {t("nav.locations")}
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -122,13 +122,13 @@ function MenuPage() {
             groupedItems.map((group) => (
               <div key={group.category} className="mb-16 last:mb-0">
                 <h2 className="text-2xl font-bold text-brand mb-6 uppercase tracking-wider">{group.category}</h2>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {group.items.map((it, i) => <MenuCard key={i} item={it} />)}
                 </div>
               </div>
             ))
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {menuItems.filter(item => item.category === activeCategory).map((it, i) => <MenuCard key={i} item={it} />)}
             </div>
           )}
@@ -140,16 +140,16 @@ function MenuPage() {
 
 function MenuCard({ item }: { item: any }) {
   return (
-    <article className="animate-fade-up overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-      <div className="aspect-[4/3] overflow-hidden">
-        <img src={item.img} alt={item.title} className="h-full w-full object-cover" />
+    <article className="group relative animate-fade-up overflow-hidden rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
+      <div className="aspect-[4/3] overflow-hidden bg-white p-4">
+        <img src={item.img} alt={item.title} className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
       </div>
-      <div className="p-6">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl font-bold">{item.title}</h3>
-          {item.price && <span className="shrink-0 rounded-full bg-brand/10 px-3 py-1 text-sm font-bold text-brand">{item.price}</span>}
+      <div className="p-5 flex flex-col items-center text-center">
+        <div className="flex flex-col items-center gap-2">
+          <h3 className="text-lg font-bold leading-tight text-foreground">{item.title}</h3>
+          {item.price && <span className="inline-block w-fit rounded-full bg-brand/10 px-3 py-1 text-xs font-bold text-brand">{item.price}</span>}
         </div>
-        {item.desc && <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>}
+        {item.desc && <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{item.desc}</p>}
       </div>
     </article>
   );

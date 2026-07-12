@@ -81,9 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head><HeadContent /></head>
-      <body>{children}<Scripts /></body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <HeadContent />
+      </head>
+      <body className="bg-background text-foreground antialiased min-h-screen flex flex-col">
+        {children}
+        <Scripts />
+      </body>
     </html>
   );
 }
@@ -93,11 +98,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1"><Outlet /></main>
-          <Footer />
-        </div>
+        <Header />
+        <main className="flex-1 flex flex-col w-full relative">
+          <Outlet />
+        </main>
+        <Footer />
       </I18nProvider>
     </QueryClientProvider>
   );

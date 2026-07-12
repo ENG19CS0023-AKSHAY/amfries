@@ -30,6 +30,14 @@
   --color-border: var(--border);
   --color-primary: var(--brand);
   --color-primary-foreground: var(--brand-foreground);
+  
+  /* Make Tailwind's default colors themeable so dark mode can invert them */
+  --color-white: var(--color-white-override, #ffffff);
+  --color-black: var(--color-black-override, #000000);
+  --color-gray-900: var(--color-gray-900-override, #111827);
+  --color-slate-500: var(--color-slate-500-override, #64748b);
+  --color-gray-800: var(--color-gray-800-override, #1f2937);
+  --color-gray-500: var(--color-gray-500-override, #6b7280);
 }
 
 :root {
@@ -70,9 +78,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.85rem 1.75rem;
-  background: #111111;
-  color: #ffffff;
-  border: 2px solid #111111;
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 2px solid var(--color-black);
   font-family: var(--font-display);
   font-weight: 700;
   text-transform: uppercase;
@@ -81,6 +89,7 @@
   transition: all 0.2s ease-out;
   &:hover {
     background: var(--background);
+    color: var(--color-black);
     transform: translateY(-1px);
   }
 }
@@ -90,9 +99,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.85rem 1.75rem;
-  background: #ffffff;
-  color: #111111;
-  border: 2px solid #111111;
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
   font-family: var(--font-display);
   font-weight: 700;
   text-transform: uppercase;
@@ -101,6 +110,7 @@
   transition: all 0.2s ease-out;
   &:hover {
     background: var(--background);
+    color: var(--color-white);
     transform: translateY(-1px);
   }
 }
@@ -120,3 +130,17 @@
 .animate-fade-up { animation: fade-up 0.7s ease-out both; }
 .animate-scale-in { animation: scale-in 0.5s ease-out both; }
 .animate-float { animation: float 4s ease-in-out infinite; }
+
+/* Keep LocationsGrid premium-card */
+@utility premium-card {
+  background: var(--color-card);
+  color: var(--color-card-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 1rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+    border-color: rgba(246, 61, 22, 0.3);
+  }
+}
