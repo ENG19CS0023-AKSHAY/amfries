@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.png";
 import mascot from "@/assets/potato-mascot.png";
+import icon from "@/assets/icon.svg";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/story")({
@@ -116,7 +117,12 @@ function StoryPage() {
       <section className="bg-brand py-20 px-4 text-brand-foreground">
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
-            <img src={mascot} alt="Amfries" className="mx-auto md:mx-0 h-24 w-24 mb-6" />
+            <img
+              src={icon}
+              alt="Amfries"
+              className="mx-auto mb-6 h-24 w-24 md:mx-0"
+              style={{ filter: "brightness(0) saturate(100%) invert(100%)" }}
+            />
             <h2 className="text-3xl md:text-4xl font-bold mb-6">See the Fries Revolution</h2>
             <p className="text-lg opacity-80">Experience the journey from Amsterdam to Bangalore. See how we redefine the snacking experience, one fry at a time.</p>
           </div>
