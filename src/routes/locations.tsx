@@ -37,10 +37,7 @@ function LocationsPage() {
           
           {/* Direct Redirection Callout Button to Assortments */}
           <div className="mt-5 sm:mt-6 md:mt-8">
-            <Link 
-              to="/menu" 
-              className="btn-outline bg-white text-black hover:bg-black hover:text-white transition-colors duration-200"
-            >
+            <Link to="/menu" className="btn-outline">
               {t("nav.menu")}
             </Link>
           </div>

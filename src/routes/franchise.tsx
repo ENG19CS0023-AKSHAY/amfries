@@ -34,10 +34,7 @@ function FranchisePage() {
           
           {/* Redirect Button to Our Story */}
           <div className="mt-5 sm:mt-6 md:mt-8">
-            <Link 
-              to="/story" 
-              className="btn-outline bg-white text-black hover:bg-black hover:text-white transition-colors duration-200"
-            >
+            <Link to="/story" className="btn-outline">
               {t("nav.story")}
             </Link>
           </div>
@@ -102,10 +99,7 @@ function FranchisePage() {
           <p className="text-lg opacity-90 mb-8">
             Connect with our franchise development team to discuss opportunities in your city.
           </p>
-          <a 
-            href="mailto:amfriesoriginal@gmail.com" 
-            className="inline-block bg-white text-brand px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform"
-          >
+          <a href="mailto:amfriesoriginal@gmail.com" className="btn-outline">
             Contact Our Team
           </a>
         </div>
