@@ -1,13 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.png";
-import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/franchise")({
   head: () => ({
     meta: [
       { title: "Franchise & collaboration — Amfries" },
-      { name: "description", content: "Open your own Amfries shop. Partner with us to bring Belgian fries to your city." },
+      { name: "description", content: "Open your own Amfries shop. Partner with us to bring authentic fries to your city." },
     ],
   }),
   component: FranchisePage,
@@ -15,9 +14,10 @@ export const Route = createFileRoute("/franchise")({
 
 function FranchisePage() {
   const { t } = useI18n();
-  const [sent, setSent] = useState(false);
+
   return (
     <>
+      {/* Hero Section */}
       <section className="relative flex h-[331.2px] items-center justify-center overflow-hidden bg-brand text-brand-foreground md:h-[475px]">
         <img
           src={heroImg}
@@ -33,37 +33,71 @@ function FranchisePage() {
           <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90 sm:mt-4 sm:text-base md:mt-6 md:text-lg">{t("franchise.body")}</p>
         </div>
       </section>
-      <section className="bg-cream py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-4 md:px-8">
-          {sent ? (
-            <div className="animate-scale-in rounded-2xl bg-cream p-10 text-center shadow">
-              <h2 className="text-3xl text-brand">Thank you!</h2>
-              <p className="mt-3 text-muted-foreground">We'll get back to you within 3 business days.</p>
+
+      {/* Why Choose Amfries */}
+      <section className="bg-cream py-16 md:py-24 px-4">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Why Partner With Amfries?</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Join a disruptive premium QSR brand that bridges the gap for high-quality, authentic snacking in India.
+            </p>
+          </div>
+          
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              { title: "Standardized Operations", desc: "Rigorous SOPs tested in our cloud kitchens ensure consistent quality and easy daily management." },
+              { title: "Premium Menu & R&D", desc: "Authentic double-fried techniques, 15+ custom sauces, and high-quality 100% sunflower oil." },
+              { title: "Robust Supply Chain", desc: "Reliable backend sourcing agreements negotiated by experienced FnB entrepreneurs." },
+              { title: "High Demand Gap", desc: "Fulfilling the massive market whitespace for premium, specialized fry-focused QSRs." },
+              { title: "Marketing & Brand Support", desc: "Comprehensive brand guidelines, launch playbooks, and continuous marketing backing." },
+              { title: "Attractive ROI", desc: "Optimized unit economics designed for rapid break-even and sustainable profitability." },
+            ].map((feature, i) => (
+              <div key={i} className="rounded-2xl border border-brand/10 bg-white p-8 hover:shadow-md transition-shadow">
+                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Growth Plan */}
+      <section className="py-16 md:py-24 px-4 bg-white">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl font-bold mb-6">Our Aggressive Growth Plan</h2>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              Amfries is not just another food stall; it is a venture built for scale. Starting with our flagship 
+              experiences, we have mapped out a strategic 5-year expansion pipeline to dominate the Indian QSR landscape.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6 mt-8 text-left">
+              <div className="bg-cream p-8 rounded-2xl border border-brand/10">
+                <h4 className="font-bold text-2xl text-brand mb-3">Phase 1: Establish</h4>
+                <p className="text-base">Launching stronghold flagship outlets in major hubs like Bangalore, perfecting the customer experience and finalizing franchise unit economics.</p>
+              </div>
+              <div className="bg-cream p-8 rounded-2xl border border-brand/10">
+                <h4 className="font-bold text-2xl text-brand mb-3">Phase 2: Scale</h4>
+                <p className="text-base">Aggressive franchise rollout targeting 100+ locations across major Indian cities over the next five years, backed by heavy marketing.</p>
+              </div>
             </div>
-          ) : (
-            <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="grid gap-4 rounded-2xl bg-cream p-8 shadow"
-            >
-              <label className="grid gap-1.5">
-                <span className="text-sm font-semibold uppercase tracking-wider">Name</span>
-                <input required className="rounded-lg border border-border px-4 py-3 focus:border-brand focus:outline-none" />
-              </label>
-              <label className="grid gap-1.5">
-                <span className="text-sm font-semibold uppercase tracking-wider">Email</span>
-                <input type="email" required className="rounded-lg border border-border px-4 py-3 focus:border-brand focus:outline-none" />
-              </label>
-              <label className="grid gap-1.5">
-                <span className="text-sm font-semibold uppercase tracking-wider">City</span>
-                <input required className="rounded-lg border border-border px-4 py-3 focus:border-brand focus:outline-none" />
-              </label>
-              <label className="grid gap-1.5">
-                <span className="text-sm font-semibold uppercase tracking-wider">Message</span>
-                <textarea rows={5} className="rounded-lg border border-border px-4 py-3 focus:border-brand focus:outline-none" />
-              </label>
-              <button type="submit" className="btn-primary mt-2">{t("franchise.cta")}</button>
-            </form>
-          )}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="bg-brand py-20 px-4 text-center text-brand-foreground">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to build the future of snacking?</h2>
+          <p className="text-lg opacity-90 mb-8">
+            Connect with our franchise development team to discuss opportunities in your city.
+          </p>
+          <a 
+            href="mailto:amfriesoriginal@gmail.com" 
+            className="inline-block bg-white text-brand px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform"
+          >
+            Contact Our Team
+          </a>
         </div>
       </section>
     </>
