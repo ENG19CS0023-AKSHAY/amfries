@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Play, X } from "lucide-react";
 import heroImg from "@/assets/hero.png";
 import mascot from "@/assets/potato-mascot.png";
 import icon from "@/assets/icon.svg";
@@ -16,6 +18,7 @@ export const Route = createFileRoute("/story")({
 
 function StoryPage() {
   const { t } = useI18n();
+  const [videoOpen, setVideoOpen] = useState(false);
 
   return (
     <>
@@ -126,22 +129,56 @@ function StoryPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">See the Fries Revolution</h2>
             <p className="text-lg opacity-80">Experience the journey from Amsterdam to Bangalore. See how we redefine the snacking experience, one fry at a time.</p>
           </div>
-          
-          {/* Video Container with Overlay */}
-          {/* Video Container with Overlay */}
-<div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black shadow-2xl">
-  <iframe
-    src="https://drive.google.com/file/d/1owuMcNUWHjnP5RdTgwhaNg2ISS_Ju5CU/preview"
-    className="w-full h-full border-0"
-    allow="autoplay"
-    allowFullScreen
-  />
-  {/* Small corner overlay to block Google Drive's menu/open-in-new-window icons,
-      without covering the centered play button on small screens */}
-  <div className="absolute top-0 right-0 w-14 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 cursor-default z-10"></div>
-</div>
+
+          {/* Video Thumbnail / Trigger */}
+          <button
+            type="button"
+            onClick={() => setVideoOpen(true)}
+            className="group relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-2xl cursor-pointer"
+            aria-label="Play video"
+          >
+            <img
+              src={heroImg}
+              alt="Watch the Amfries story"
+              className="h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-50"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform group-hover:scale-110">
+                <Play className="h-7 w-7 md:h-8 md:w-8 text-brand fill-brand ml-1" />
+              </span>
+            </div>
+          </button>
         </div>
       </section>
+
+      {/* Video Modal */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
+          onClick={() => setVideoOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setVideoOpen(false)}
+            className="absolute top-4 right-4 md:top-6 md:right-6 z-[101] flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+            aria-label="Close video"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div
+            className="relative w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src="https://drive.google.com/file/d/1owuMcNUWHjnP5RdTgwhaNg2ISS_Ju5CU/preview"
+              className="h-full w-full border-0"
+              allow="autoplay"
+              sandbox="allow-scripts allow-same-origin allow-presentation"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
