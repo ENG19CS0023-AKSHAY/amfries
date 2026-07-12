@@ -78,8 +78,11 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: 9999px;
-  transition: all 0.25s ease;
-  &:hover { background: var(--brand); color: #ffffff; transform: translateY(-1px); }
+  transition: all 0.2s ease-out;
+  &:hover {
+    background: var(--background);
+    transform: translateY(-1px);
+  }
 }
 
 @utility btn-outline {
@@ -95,8 +98,11 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: 9999px;
-  transition: all 0.25s ease;
-  &:hover { background: #f3ece9; transform: translateY(-1px); }
+  transition: all 0.2s ease-out;
+  &:hover {
+    background: var(--background);
+    transform: translateY(-1px);
+  }
 }
 
 @keyframes fade-up {

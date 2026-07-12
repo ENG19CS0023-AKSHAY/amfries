@@ -26,13 +26,10 @@ function StoryPage() {
           <h1 className="text-4xl md:text-7xl font-bold">Amsterdam Original</h1>
           <p className="mt-4 text-xl md:text-2xl opacity-90">A fresh, bold fries revolution in Bangalore.</p>
           <div className="mt-5 sm:mt-6 md:mt-8">
-                      <Link 
-                        to="/menu" 
-                        className="btn-outline bg-white text-black hover:bg-black hover:text-white transition-colors duration-200"
-                      >
-                        {t("nav.menu")}
-                      </Link>
-                    </div>
+            <Link to="/menu" className="btn-outline">
+              {t("nav.menu")}
+            </Link>
+          </div>
         </div>
       </section>
 
