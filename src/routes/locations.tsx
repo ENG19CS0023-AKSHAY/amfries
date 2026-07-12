@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.png";
 import { LocationsGrid } from "@/components/LocationsGrid";
 import { useI18n } from "@/lib/i18n";
@@ -20,6 +20,7 @@ function LocationsPage() {
 
   return (
     <>
+      {/* Hero Section */}
       <section className="relative flex h-[331.2px] items-center justify-center overflow-hidden bg-brand text-brand-foreground md:h-[475px]">
         <img
           src={heroImg}
@@ -33,9 +34,22 @@ function LocationsPage() {
         <div className="animate-fade-up relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-6 text-center sm:py-8 md:py-10">
           <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl">{t("nav.locations")}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90 sm:mt-4 sm:text-base md:mt-6 md:text-lg">{t("locations.title")}</p>
+          
+          {/* Direct Redirection Callout Button to Assortments */}
+          <div className="mt-5 sm:mt-6 md:mt-8">
+            <Link 
+              to="/menu" 
+              className="btn-outline bg-white text-black hover:bg-black hover:text-white transition-colors duration-200"
+            >
+              {t("nav.menu")}
+            </Link>
+          </div>
         </div>
       </section>
+
       <LocationsGrid />
+
+      {/* Map Section */}
       <section className="bg-cream pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="overflow-hidden rounded-xl border border-border bg-cream shadow-sm">
