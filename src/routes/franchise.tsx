@@ -60,7 +60,7 @@ function FranchisePage() {
               { title: "Marketing & Brand Support", desc: "Comprehensive brand guidelines, launch playbooks, and continuous marketing backing." },
               { title: "Attractive ROI", desc: "Optimized unit economics designed for rapid break-even and sustainable profitability." },
             ].map((feature, i) => (
-              <div key={i} className="rounded-2xl border border-brand/10 bg-white p-8 hover:shadow-md transition-shadow">
+              <div key={i} className="rounded-2xl border border-border bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
                 <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.desc}</p>
               </div>
@@ -79,13 +79,13 @@ function FranchisePage() {
               experiences, we have mapped out a strategic 5-year expansion pipeline to dominate the Indian QSR landscape.
             </p>
             <div className="grid sm:grid-cols-2 gap-6 mt-8 text-left">
-              <div className="bg-cream p-8 rounded-2xl border border-brand/10">
+              <div className="bg-white p-8 rounded-2xl border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
                 <h4 className="font-bold text-2xl text-brand mb-3">Phase 1: Establish</h4>
-                <p className="text-base">Launching stronghold flagship outlets in major hubs like Bangalore, perfecting the customer experience and finalizing franchise unit economics.</p>
+                <p className="text-base text-muted-foreground">Launching stronghold flagship outlets in major hubs like Bangalore, perfecting the customer experience and finalizing franchise unit economics.</p>
               </div>
-              <div className="bg-cream p-8 rounded-2xl border border-brand/10">
+              <div className="bg-white p-8 rounded-2xl border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
                 <h4 className="font-bold text-2xl text-brand mb-3">Phase 2: Scale</h4>
-                <p className="text-base">Aggressive franchise rollout targeting 100+ locations across major Indian cities over the next five years, backed by heavy marketing.</p>
+                <p className="text-base text-muted-foreground">Aggressive franchise rollout targeting 100+ locations across major Indian cities over the next five years, backed by heavy marketing.</p>
               </div>
             </div>
           </div>

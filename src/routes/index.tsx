@@ -208,29 +208,29 @@ function Home() {
 
         <div className="relative mt-14 flex w-full overflow-hidden">
           {/* Marquee Container */}
-          <div className="animate-marquee gap-8">
+          <div className="animate-marquee gap-8 py-4">
             {[...sauces, ...sauces].map((sauce, i) => (
               <div 
                 key={`${sauce.name}-${i}`} 
-                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48"
+                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-[#f63d16] rounded-[1.25rem] p-4 text-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                {/* Visual Frame - Removed circle border background & shadows */}
-                <div className="relative aspect-square w-28 overflow-hidden sm:w-32">
+                {/* Visual Frame */}
+                <div className="relative aspect-square w-24 overflow-hidden sm:w-28 bg-white rounded-[1rem] shadow-sm p-1">
                   <img
                     src={sauce.visual}
                     alt={sauce.name}
-                    className="h-full w-full object-contain transform hover:scale-105 transition-transform duration-200"
+                    className="h-full w-full object-contain transform hover:scale-110 transition-transform duration-300 rounded-[0.75rem]"
                   />
                 </div>
 
                 {/* Info Text Area Directly Below */}
-                <div className="text-center min-h-[4rem] flex flex-col items-center justify-start">
-                  <h3 className="text-sm font-bold uppercase tracking-wide text-gray-950 line-clamp-2 px-1">
+                <div className="text-center min-h-[4rem] flex flex-col items-center justify-start mt-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wide line-clamp-2 px-1 text-white">
                     {sauce.name}
                   </h3>
                   
                   {sauce.tag === 'spicy' && (
-                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase text-orange-500">
+                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase text-yellow-300">
                       <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
                         <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
                         <path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -240,7 +240,7 @@ function Home() {
                   )}
                   
                   {sauce.tag === 'signature' && (
-                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase text-emerald-600">
+                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase text-emerald-200">
                       <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                       </svg>

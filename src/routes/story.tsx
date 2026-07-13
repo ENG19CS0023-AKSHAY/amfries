@@ -79,7 +79,7 @@ function StoryPage() {
               { h: "Sauce Laboratory", p: "15 custom sauces crafted, from classic Dutch Andalouse to bold Indian fusion." },
               { h: "Constant Iteration", p: "Every aspect, from frying techniques to packaging, has been fine-tuned for two years." },
             ].map((item, i) => (
-              <div key={i} className="rounded-2xl border border-brand/10 p-8 bg-white hover:shadow-md transition-shadow">
+              <div key={i} className="rounded-2xl border border-brand/10 p-8 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
                 <h3 className="text-xl font-semibold mb-3">{item.h}</h3>
                 <p className="text-muted-foreground">{item.p}</p>
               </div>
@@ -93,11 +93,11 @@ function StoryPage() {
         <div className="mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold text-center mb-12">What Makes Amfries Unique</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 border rounded-2xl">
+            <div className="p-8 border border-border rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
               <h3 className="font-bold text-xl mb-2">Double-Fried Perfection</h3>
               <p className="text-muted-foreground">Time-honored Amsterdam technique for a crispy outside and soft, fluffy inside.</p>
             </div>
-            <div className="p-8 border rounded-2xl">
+            <div className="p-8 border border-border rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
               <h3 className="font-bold text-xl mb-2">100% Sunflower Oil</h3>
               <p className="text-muted-foreground">Zero trans-fat and no palm oil for a cleaner, healthier, and superior taste.</p>
             </div>
