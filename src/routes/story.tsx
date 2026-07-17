@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, X } from "lucide-react";
 import heroImg from "@/assets/hero.png";
-import mascot from "@/assets/potato-mascot.png";
 import icon from "@/assets/icon.svg";
 import video from "@/assets/2.mp4";
 import { useI18n } from "@/lib/i18n";

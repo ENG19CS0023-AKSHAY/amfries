@@ -9,33 +9,33 @@ import mediumSize from "@/assets/(24) Medium.jpg";
 import largeSize from "@/assets/(25) groot.jpg";
 
 // Frites Specials imports
-import dutchOriginal from "@/assets/(27) Dutch Originals.jpg";
-import ghostBuster from "@/assets/(28) Ghost Busters.jpg";
-import dutchWar from "@/assets/(29) Dutch War Fries.jpg";
-import mangoChills from "@/assets/(30) Mango Chilli Tartare.jpg";
-import truffle from "@/assets/(31)Truffle Luxe.jpg";
-import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.jpg";
+import dutchOriginal from "@/assets/(27) Dutch Originals.png";
+import ghostBuster from "@/assets/(28) Ghost Busters.png";
+import dutchWar from "@/assets/(29) Dutch War Fries.png";
+import mangoChills from "@/assets/(30) Mango Chilli Tartare.png";
+import truffle from "@/assets/(31)Truffle Luxe.png";
+import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.png";
 
 // Sauce imports
-import andalouse from "@/assets/(01) Andalouse.jpg";
-import samurai from "@/assets/(02) Samurai.jpg";
-import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.jpg";
-import pink_tartare from "@/assets/(05)Pink Tartare.jpg";
-import tomato_ketchup from "@/assets/(06) Tomato Ketchup.jpg";
-import premium_mayo from "@/assets/(07) Premium Mayonnaise.jpg";
-import truffle_aioli from "@/assets/(12) Truffle Aioli.jpg";
-import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.jpg";
-import sriracha_hot_chilli_sauce from "@/assets/(09) Sriracha Hot Chilli Sauce.jpg";
-import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.jpg";
-import ghost_sweet_chilli from "@/assets/(11) Ghost Sweet Chilli.jpg";
-import cajun_mayo from "@/assets/(03) Cajun Mayo.jpg";
-import hot_sweet_ketchup from "@/assets/(13) Hot & Sweet Ketchup.jpg";
-import sriracha_mayo from "@/assets/(14) Sriracha Mayo.jpg";
+import andalouse from "@/assets/(01Andalouse.png";
+import samurai from "@/assets/(02) Samurai.png";
+import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.png";
+import pink_tartare from "@/assets/(05)Pink Tartare.png";
+import tomato_ketchup from "@/assets/(06) Tomato Ketchup.png";
+import premium_mayo from "@/assets/(07) Premium Mayonnaise.png";
+import truffle_aioli from "@/assets/(12) Truffle Aioli.png";
+import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.png";
+import sriracha_hot_chilli_sauce from "@/assets/(09) Sriracha Hot Chilli Sauce.png";
+import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.png";
+import ghost_sweet_chilli from "@/assets/(11) Ghost Sweet Chilli.png";
+import cajun_mayo from "@/assets/(03) Cajun Mayo.png";
+import hot_sweet_ketchup from "@/assets/(13) Hot & Sweet Ketchup.png";
+import sriracha_mayo from "@/assets/(14) Sriracha Mayo.png";
 
 // Drinks imports
-import deit_coke from "@/assets/(21) Diet coke.jpg";
-import coca_zero from "@/assets/(22) Coca zero.jpg";
-import coke_classic from "@/assets/(23) Coke classic.jpg";
+import deit_coke from "@/assets/(21) Diet coke.png";
+import coca_zero from "@/assets/(22) Coca zero.png";
+import coke_classic from "@/assets/(23) Coke classic.png";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
