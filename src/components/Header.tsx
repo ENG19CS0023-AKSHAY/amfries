@@ -37,7 +37,7 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className="font-display text-sm font-semibold uppercase tracking-wider transition hover:text-black [&.active]:text-black [&.active]:underline [&.active]:underline-offset-8"
+              className="font-display text-sm font-semibold tracking-wider transition hover:text-black [&.active]:text-black [&.active]:underline [&.active]:underline-offset-8"
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}

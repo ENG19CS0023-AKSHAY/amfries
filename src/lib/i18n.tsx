@@ -6,10 +6,10 @@ type Dict = Record<string, string>;
 
 const en: Dict = {
   "nav.home": "Homepage",
-  "nav.locations": "LOCATIONS",
+  "nav.locations": "Locations",
   "nav.menu": "Assortment",
   "nav.story": "Our story",
-  "nav.franchise": "FRANCHISE & COLLABORATION",
+  "nav.franchise": "Franchise & Collaboration",
   "hero.title": "THE BEST FRIES OF BANGALORE",
   "hero.subtitle": "Freshly cut. Twice fried. The Belgian way — served hot in Koramangala.",
   "hero.cta1": "Find a location",

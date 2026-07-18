@@ -32,7 +32,7 @@ function LocationsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
         <div className="animate-fade-up relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-6 text-center sm:py-8 md:py-10">
-          <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl">{t("nav.locations")}</h1>
+          <h1 className="text-3xl leading-[0.95] uppercase sm:text-4xl md:text-6xl lg:text-7xl">{t("nav.locations")}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90 sm:mt-4 sm:text-base md:mt-6 md:text-lg">{t("locations.title")}</p>
           
         </div>
