@@ -26,7 +26,7 @@ export function LocationsGrid() {
     <section className="bg-background py-20 md:py-32 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-12 md:mb-16">
-          <h2 className="text-3xl font-extrabold uppercase tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             {t("locations.title")}
           </h2>
           <div className="mt-4 h-1 w-20 bg-brand"></div>

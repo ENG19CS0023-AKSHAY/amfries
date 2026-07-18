@@ -27,7 +27,7 @@ function StoryPage() {
         <img src={heroImg} alt="Amfries counter" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover opacity-90 blur-[2.5px]" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="animate-fade-up relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <h1 className="text-4xl md:text-7xl font-bold">Amsterdam Original</h1>
+          <h1 className="text-4xl md:text-7xl font-bold">AMSTERDAM ORIGINAL</h1>
           <p className="mt-4 text-xl md:text-2xl opacity-90">A fresh, bold fries revolution in Bangalore.</p>
         </div>
       </section>
