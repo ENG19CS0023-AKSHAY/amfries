@@ -22,13 +22,25 @@ import mediumSize from "@/assets/(24) Medium.jpg";
 import largeSize from "@/assets/(25) groot.jpg";
 
 // Left Grid Layout Custom Assets
-import dutchOriginal from "@/assets/(27) Dutch Originals.png";
-import ghostBuster from "@/assets/(28) Ghost Busters.png";
-import dutchWar from "@/assets/(29) Dutch War Fries.png";
-import mangoChills from "@/assets/(30) Mango Chilli Tartare.png";
-import truffle from "@/assets/(31)Truffle Luxe.png";
-import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.png";
 
+import amfriesReview from "@/assets/amfries1.jpg";
+import amfriesReview1 from "@/assets/amfries2.jpg";
+import amfriesReview2 from "@/assets/amfries3.png";
+import amfriesReview3 from "@/assets/amfries4.jpg";
+import amfriesReview4 from "@/assets/amfries5.jpg";
+import amfriesReview5 from "@/assets/amfries6.jpg";
+import amfriesReview6 from "@/assets/amfries7.jpg";
+import amfriesReview7 from "@/assets/amfries8.jpg";
+import amfriesReview8 from "@/assets/amfries9.jpg";
+import amfriesReview9 from "@/assets/amfries10.jpg";
+import amfriesReview10 from "@/assets/amfries11.jpg";
+import amfriesReview11 from "@/assets/amfries12.jpg";
+import amfriesReview12 from "@/assets/amfries13.jpg";
+import amfriesReview13 from "@/assets/amfries14.jpg";
+import amfriesReview14 from "@/assets/amfries15.jpg";
+import amfriesReview15 from "@/assets/amfries16.jpg";
+import amfriesReview16 from "@/assets/amfries17.jpg";
+import amfriesReview17 from "@/assets/amfries18.jpg";
 import { LocationsGrid } from "@/components/LocationsGrid";
 import { useI18n } from "@/lib/i18n";
 
@@ -39,7 +51,6 @@ type SizeKey = "small" | "medium" | "large";
 interface SizeConfig {
   name: string;
   label: string;
-  moodEmoji: string;
   imgAsset: string;
   transformScale: string;
 }
@@ -70,35 +81,50 @@ function Home() {
     small: { 
       name: "Regular", 
       label: "Regular", 
-      moodEmoji: "🙂", 
       imgAsset: regularSize,
       transformScale: "scale-[0.75]" 
     },
     medium: { 
       name: "Medium", 
       label: "Medium", 
-      moodEmoji: "😋", 
       imgAsset: mediumSize,
       transformScale: "scale-[1.125]" 
     },
     large: { 
       name: "Groot", 
       label: "Groot / Large", 
-      moodEmoji: "🥳", 
       imgAsset: largeSize,
       transformScale: "scale-[1.50]" 
     },
   };
 
   const leftGridImages = [
-    dutchOriginal,
-    ghostBuster,
-    dutchWar,
-    mangoChills,
-    truffle,
-    oldAmsterdam,
-    heroImg
-  ];
+  amfriesReview,
+  amfriesReview1,
+  amfriesReview2,
+  amfriesReview3,
+  amfriesReview4,
+  amfriesReview5,
+  amfriesReview6,
+  amfriesReview7,
+  amfriesReview8,
+  amfriesReview9,
+  amfriesReview10,
+  amfriesReview11,
+  amfriesReview12,
+  amfriesReview13,
+  amfriesReview14,
+  amfriesReview15,
+  amfriesReview16,
+  amfriesReview17,
+];
+
+// 20 images (reuse first two)
+const collageImages = [
+  ...leftGridImages,
+  amfriesReview,
+  amfriesReview1,
+];
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseInt(e.target.value, 10);
@@ -108,8 +134,6 @@ function Home() {
     else if (val < 68) setSizeTier("medium");
     else setSizeTier("large");
   };
-
-  const currentEmoji = sizingMap[sizeTier].moodEmoji;
 
   return (
     <>
@@ -130,9 +154,10 @@ function Home() {
         .slider-box input[type="range"] {
           -webkit-appearance: none;
           appearance: none;
-          width: 6px;
+          width: 8px;
           height: 340px;
-          background: #e2e8f0;
+          /* CSS linear gradient fill calculation for vertical slider track matching layout direction */
+          background: linear-gradient(to top, #f63d16 var(--slider-fill), #e2e8f0 var(--slider-fill));
           border-radius: 99px;
           outline: none;
           writing-mode: vertical-lr;
@@ -153,7 +178,7 @@ function Home() {
           cursor: grabbing;
         }
         .slider-box input[type="range"]::-moz-range-thumb {
-          width: 56px;
+          width: 10px;
           height: 56px;
           border-radius: 50%;
           background: transparent;
@@ -174,16 +199,15 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
         <div className="animate-fade-up relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-6 text-center sm:py-8 md:py-10">
-          <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl">
+          <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl normal-case">
             {t("hero.title")}
           </h1>
           <div className="mt-5 flex flex-wrap justify-center gap-3 sm:mt-6 md:mt-8">
-            <Link to="/locations" className="btn-outline">{t("hero.cta1")}</Link>
             <a 
               href="https://www.instagram.com/amfries.in/?hl=en" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-outline inline-flex items-center"
+              className="btn-outline inline-flex items-center text-sm font-bold tracking-wide"
             >
               Our Videos
             </a>
@@ -194,12 +218,12 @@ function Home() {
       <LocationsGrid />
 
       {/* Sauce Carousel Section */}
-      <section id="assortment" className="overflow-hidden bg-white py-20 md:py-28">
+      <section id="assortment" className="overflow-hidden bg-[#f63d16] text-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
-          <h2 className="text-3xl font-extrabold uppercase tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl normal-case">
             Choose from 10+ sauces
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-500">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-orange-100/90">
             Pick a flavour that fits your mood, from mellow classics to fiery favourites.
           </p>
         </div>
@@ -210,20 +234,20 @@ function Home() {
             {[...sauces, ...sauces].map((sauce, i) => (
               <div 
                 key={`${sauce.name}-${i}`} 
-                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-[#f63d16] rounded-[1.25rem] p-4 text-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-transparent p-2 text-white transition-all duration-300 hover:-translate-y-2"
               >
-                {/* Visual Frame */}
-                <div className="relative aspect-square w-24 overflow-hidden sm:w-28 bg-white rounded-[1rem] shadow-sm p-1">
+                {/* Visual Frame - No cards, no background backdrops */}
+                <div className="relative aspect-square w-24 overflow-hidden sm:w-28 bg-transparent p-0">
                   <img
                     src={sauce.visual}
                     alt={sauce.name}
-                    className="h-full w-full object-contain transform hover:scale-110 transition-transform duration-300 rounded-[0.75rem]"
+                    className="h-full w-full object-contain transform hover:scale-110 transition-transform duration-300"
                   />
                 </div>
 
                 {/* Info Text Area Directly Below */}
                 <div className="text-center min-h-[4rem] flex flex-col items-center justify-start mt-2">
-                  <h3 className="text-sm font-bold uppercase tracking-wide line-clamp-2 px-1 text-white">
+                  <h3 className="text-sm font-bold tracking-wide line-clamp-2 px-1 text-white normal-case">
                     {sauce.name}
                   </h3>
                   
@@ -238,7 +262,7 @@ function Home() {
                   )}
                   
                   {sauce.tag === 'signature' && (
-                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase text-emerald-200">
+                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase text-emerald-300">
                       <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                       </svg>
@@ -250,102 +274,133 @@ function Home() {
             ))}
           </div>
 
-          {/* Edge Fade Gradients */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent md:w-28" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent md:w-28" />
+          {/* Edge Fade Gradients - Configured to blend seamlessly into the orange background */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#f63d16] to-transparent md:w-28" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#f63d16] to-transparent md:w-28" />
         </div>
       </section>
 
       {/* Sizer Section */}
-      <section className="bg-white text-gray-900 flex flex-wrap flex-col-reverse lg:flex-row items-stretch w-full overflow-hidden">
-        <div className="w-full lg:w-1/2 flex items-stretch">
-          <div className="grid grid-cols-2 md:hidden w-full gap-0">
-            {leftGridImages.slice(0, 4).map((img, i) => (
-              <div key={i} className="relative overflow-hidden w-full aspect-square">
-                <img className="h-full w-full object-cover" src={img} alt="Amfries Fry Spread Selection" />
-              </div>
-            ))}
+      <section className="bg-white text-gray-900 flex flex-col-reverse lg:flex-row items-stretch w-full overflow-hidden lg:min-h-[700px]">
+  {/* Left Side - Review Collage */}
+  <div className="w-full lg:w-1/2 flex">
+
+    {/* Mobile - 3 × 6 */}
+    <div className="grid grid-cols-3 sm:hidden w-full gap-0">
+      {collageImages.slice(0, 18).map((img, i) => (
+        <div key={i} className="relative aspect-square overflow-hidden">
+          <img
+            src={img}
+            alt="Amfries customer review"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+
+    {/* Tablet - 4 × 5 */}
+    <div className="hidden sm:grid lg:hidden grid-cols-4 w-full gap-0">
+      {collageImages.slice(0, 20).map((img, i) => (
+        <div key={i} className="relative aspect-square overflow-hidden">
+          <img
+            src={img}
+            alt="Amfries customer review"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+
+    {/* Desktop - 4 × 5 */}
+    <div className="hidden lg:grid grid-cols-4 grid-rows-5 w-full h-full gap-0">
+      {collageImages.slice(0, 20).map((img, i) => (
+        <div key={i} className="relative overflow-hidden">
+          <img
+            src={img}
+            alt="Amfries customer review"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Right Side - Size Selector */}
+  <div className="w-full lg:w-1/2 flex items-center px-6 md:px-16 xl:px-24 py-12 md:py-20 bg-white">
+    <div className="w-full max-w-xl">
+      <h2 className="text-center lg:text-left text-[#000000] font-extrabold text-3xl md:text-4xl lg:text-5xl mb-12 tracking-tight normal-case">
+        Which size fits you?
+      </h2>
+
+      <div className="flex flex-row items-center justify-center lg:justify-start gap-12 md:gap-16 lg:gap-20 h-[400px]">
+        <div className="flex h-full items-center relative select-none">
+          <div className="flex items-center slider-box relative h-[340px]">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={sliderVal}
+              onChange={handleSliderChange}
+              className="z-10"
+              style={
+                { "--slider-fill": `${sliderVal}%` } as React.CSSProperties
+              }
+            />
+
+            <div
+              className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-20 h-5 w-5 rounded-full bg-[#f63d16] ring-2 ring-white shadow-[0_2px_5px_rgba(246,61,22,0.4),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-150 ease-out"
+              style={{ bottom: `calc(${sliderVal}% - 10px)` }}
+            />
           </div>
 
-          <div className="grid-cols-2 hidden md:grid lg:hidden w-full gap-0">
-            {leftGridImages.slice(0, 6).map((img, i) => (
-              <div key={i} className="relative overflow-hidden w-full h-64">
-                <img className="h-full w-full object-cover shadow-xs" src={img} alt="Amfries Fry Spread Selection" />
-              </div>
-            ))}
-          </div>
+          <div className="flex flex-col-reverse justify-between h-[340px] ml-6 pl-6 border-l-2 border-slate-100">
+            {(["small", "medium", "large"] as SizeKey[]).map((tier) => (
+              <button
+                key={tier}
+                type="button"
+                onClick={() => {
+                  setSizeTier(tier);
+                  setSliderVal(
+                    tier === "small" ? 15 : tier === "medium" ? 50 : 85
+                  );
+                }}
+                className="text-left group outline-none focus:outline-none py-2"
+              >
+                <span
+                  className={`text-xl block tracking-tight transition-all duration-200 ${
+                    sizeTier === tier
+                      ? "text-[#000000] font-black scale-102"
+                      : "text-gray-400 font-bold"
+                  }`}
+                >
+                  {sizingMap[tier].name}
+                </span>
 
-          <div className="hidden lg:grid grid-cols-2 xl:grid-cols-3 w-full gap-0 min-h-[600px]">
-            {leftGridImages.slice(0, 6).map((img, i) => (
-              <div key={i} className="relative overflow-hidden w-full h-full min-h-[220px]">
-                <img className="h-full w-full object-cover" src={img} alt="Amfries Fry Spread Selection" />
-              </div>
+                <span
+                  className={`text-xs block tracking-wider uppercase transition-all duration-200 mt-0.5 ${
+                    sizeTier === tier
+                      ? "text-slate-500 font-semibold"
+                      : "text-gray-300 font-medium"
+                  }`}
+                >
+                  {sizingMap[tier].label}
+                </span>
+              </button>
             ))}
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 py-12 md:py-20 flex flex-col justify-center items-center lg:items-start px-6 md:px-16 xl:px-24 bg-white">
-          <div className="w-full max-w-xl">
-            <h2 className="text-center lg:text-left text-[#000000] font-extrabold text-3xl md:text-4xl lg:text-5xl mb-12 tracking-tight">
-              Which size fits you?
-            </h2>
-            
-            <div className="flex flex-row items-center justify-center lg:justify-start gap-12 md:gap-16 lg:gap-20 h-[400px]">
-              <div className="flex h-full items-center relative select-none">
-                <div className="flex items-center slider-box relative h-[340px]">
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="100" 
-                    value={sliderVal}
-                    onChange={handleSliderChange}
-                    className="z-10"
-                  />
-                  <span 
-                    className="absolute left-1/2 -translate-x-1/2 pointer-events-none text-4xl select-none filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)] z-20"
-                    style={{ bottom: `calc(${sliderVal}% - 20px)` }}
-                  >
-                    {currentEmoji}
-                  </span>
-                </div>
-
-                <div className="flex flex-col-reverse justify-between h-[340px] ml-6 pl-6 border-l-2 border-slate-100">
-                  {(["small", "medium", "large"] as SizeKey[]).map((tier) => (
-                    <button
-                      key={tier}
-                      type="button"
-                      onClick={() => {
-                        setSizeTier(tier);
-                        setSliderVal(tier === "small" ? 15 : tier === "medium" ? 50 : 85);
-                      }}
-                      className="text-left group outline-none focus:outline-none py-2"
-                    >
-                      <span className={`text-xl block tracking-tight transition-all duration-200 ${
-                        sizeTier === tier ? "text-[#000000] font-black scale-102" : "text-gray-400 font-bold"
-                      }`}>
-                        {sizingMap[tier].name}
-                      </span>
-                      <span className={`text-xs block tracking-wider uppercase transition-all duration-200 mt-0.5 ${
-                        sizeTier === tier ? "text-slate-500 font-semibold" : "text-gray-300 font-medium"
-                      }`}>
-                        {sizingMap[tier].label}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="w-56 md:w-64 h-[340px] flex items-center justify-center bg-transparent overflow-visible">
-                <img 
-                  src={sizingMap[sizeTier].imgAsset} 
-                  alt={sizingMap[sizeTier].name} 
-                  className={`w-full h-full object-contain transition-transform duration-300 ease-out origin-center transform ${sizingMap[sizeTier].transformScale}`}
-                />
-              </div>
-            </div>
-          </div>
+        <div className="w-56 md:w-64 h-[340px] flex items-center justify-center overflow-visible">
+          <img
+            src={sizingMap[sizeTier].imgAsset}
+            alt={sizingMap[sizeTier].name}
+            className={`w-full h-full object-contain transition-transform duration-300 ease-out ${sizingMap[sizeTier].transformScale}`}
+          />
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Reviews Banner */}
       <a 
@@ -384,7 +439,7 @@ function Home() {
             </svg>
           </div>
 
-          <div className="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900 flex items-center space-x-2 group">
+          <div className="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900 flex items-center space-x-2 group flex-row">
             <span className="font-extrabold text-[#1a73e8]">75</span> 
             <span className="text-gray-500 font-normal">Google Reviews</span>
             <span className="text-xl text-[#1a73e8] inline-block transition-transform duration-150 transform group-hover:translate-x-1">→</span>

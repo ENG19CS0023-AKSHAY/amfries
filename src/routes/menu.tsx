@@ -94,11 +94,6 @@ function MenuPage() {
         <div className="animate-fade-up relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">{t("menu.title")}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg opacity-90">{t("menu.subtitle")}</p>
-          <div className="mt-5 sm:mt-6 md:mt-8">
-            <Link to="/locations" className="btn-outline">
-              {t("nav.locations")}
-            </Link>
-          </div>
         </div>
       </section>
 

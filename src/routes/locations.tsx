@@ -35,12 +35,6 @@ function LocationsPage() {
           <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl">{t("nav.locations")}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90 sm:mt-4 sm:text-base md:mt-6 md:text-lg">{t("locations.title")}</p>
           
-          {/* Direct Redirection Callout Button to Assortments */}
-          <div className="mt-5 sm:mt-6 md:mt-8">
-            <Link to="/menu" className="btn-outline">
-              {t("nav.menu")}
-            </Link>
-          </div>
         </div>
       </section>
 
