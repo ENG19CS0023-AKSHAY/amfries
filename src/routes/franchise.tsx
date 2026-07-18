@@ -32,12 +32,6 @@ function FranchisePage() {
           <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl">{t("franchise.title")}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90 sm:mt-4 sm:text-base md:mt-6 md:text-lg">{t("franchise.body")}</p>
           
-          {/* Redirect Button to Our Story */}
-          <div className="mt-5 sm:mt-6 md:mt-8">
-            <Link to="/story" className="btn-outline">
-              {t("nav.story")}
-            </Link>
-          </div>
         </div>
       </section>
 
