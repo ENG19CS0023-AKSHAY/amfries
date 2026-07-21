@@ -31,7 +31,7 @@ function FranchisePage() {
         <div className="animate-fade-up relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-6 text-center sm:py-8 md:py-10">
           <h1 className="text-3xl leading-[0.95] sm:text-4xl md:text-6xl lg:text-7xl">{t("franchise.title")}</h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm opacity-90 sm:mt-4 sm:text-base md:mt-6 md:text-lg">{t("franchise.body")}</p>
-          
+
         </div>
       </section>
 
@@ -44,7 +44,7 @@ function FranchisePage() {
               Join a disruptive premium QSR brand that bridges the gap for high-quality, authentic snacking in India.
             </p>
           </div>
-          
+
           <div className="grid gap-8 md:grid-cols-3">
             {[
               { title: "Standardized Operations", desc: "Rigorous SOPs tested in our cloud kitchens ensure consistent quality and easy daily management." },
@@ -69,7 +69,7 @@ function FranchisePage() {
           <h2 className="text-3xl font-bold mb-6">Our Aggressive Growth Plan</h2>
           <div className="space-y-6 text-lg text-muted-foreground">
             <p>
-              Amfries is not just another food stall; it is a venture built for scale. Starting with our flagship 
+              Amfries is not just another food stall; it is a venture built for scale. Starting with our flagship
               experiences, we have mapped out a strategic 5-year expansion pipeline to dominate the Indian QSR landscape.
             </p>
             <div className="grid sm:grid-cols-2 gap-6 mt-8 text-left">
@@ -87,13 +87,16 @@ function FranchisePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-brand py-20 px-4 text-center text-brand-foreground">
+      <section className="bg-gradient-to-b from-[#f63d16] to-[#b32b0f] py-20 px-4 text-center text-white">
         <div className="mx-auto max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to build the future of snacking?</h2>
-          <p className="text-lg opacity-90 mb-8">
+          <p className="text-lg text-white/90 mb-8">
             Connect with our franchise development team to discuss opportunities in your city.
           </p>
-          <a href="mailto:amfriesoriginal@gmail.com" className="btn-outline">
+          <a
+            href="mailto:amfriesoriginal@gmail.com"
+            className="btn-outline inline-flex items-center text-sm font-bold tracking-wide text-slate-700 border-slate-700 hover:bg-slate-50 hover:text-slate-900"
+          >
             Contact Our Team
           </a>
         </div>
