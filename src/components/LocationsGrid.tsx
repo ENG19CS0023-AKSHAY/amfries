@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero.png";
+import heroImg from "@/assets/hero.webp";
 import { useI18n } from "@/lib/i18n";
 
 type Loc = {
@@ -41,14 +41,6 @@ export function LocationsGrid() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-4 py-2 text-white font-medium shadow-sm border border-white/30">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-brand"></span>
-              </span>
-              Now Open
-            </div>
           </div>
 
           {/* Content Side */}
@@ -65,19 +57,7 @@ export function LocationsGrid() {
               </div>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{location.address}</p>
             </div>
-
-            <div className="flex items-center gap-4 mb-10">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t("locations.open")}</div>
-                <div className="text-sm sm:text-base font-medium text-foreground">{location.hours}</div>
-              </div>
-            </div>
-
+            <div className="flex items-start gap-4 mb-6"></div>
             <a
               href={location.maps}
               target="_blank"

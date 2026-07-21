@@ -1,41 +1,41 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import heroImg from "@/assets/hero.png";
+import heroImg from "@/assets/hero.webp";
 import { useI18n } from "@/lib/i18n";
 
 // Fries imports
-import regularSize from "@/assets/(23) Regular.jpg";
-import mediumSize from "@/assets/(24) Medium.jpg";
-import largeSize from "@/assets/(25) groot.jpg";
+import regularSize from "@/assets/(23) Regular.webp";
+import mediumSize from "@/assets/(24) Medium.webp";
+import largeSize from "@/assets/(25) groot.webp";
 
 // Frites Specials imports
-import dutchOriginal from "@/assets/(27) Dutch Originals.png";
-import ghostBuster from "@/assets/(28) Ghost Busters.png";
-import dutchWar from "@/assets/(29) Dutch War Fries.png";
-import mangoChills from "@/assets/(30) Mango Chilli Tartare.png";
-import truffle from "@/assets/(31)Truffle Luxe.png";
-import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.png";
+import dutchOriginal from "@/assets/(27) Dutch Originals.webp";
+import ghostBuster from "@/assets/(28) Ghost Busters.webp";
+import dutchWar from "@/assets/(29) Dutch War Fries.webp";
+import mangoChills from "@/assets/(30) Mango Chilli Tartare.webp";
+import truffle from "@/assets/(31)Truffle Luxe.webp";
+import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.webp";
 
 // Sauce imports
-import andalouse from "@/assets/(01Andalouse.png";
-import samurai from "@/assets/(02) Samurai.png";
-import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.png";
-import pink_tartare from "@/assets/(05)Pink Tartare.png";
-import tomato_ketchup from "@/assets/(06) Tomato Ketchup.png";
-import premium_mayo from "@/assets/(07) Premium Mayonnaise.png";
-import truffle_aioli from "@/assets/(12) Truffle Aioli.png";
-import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.png";
-import sriracha_hot_chilli_sauce from "@/assets/(09) Sriracha Hot Chilli Sauce.png";
-import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.png";
-import ghost_sweet_chilli from "@/assets/(11) Ghost Sweet Chilli.png";
-import cajun_mayo from "@/assets/(03) Cajun Mayo.png";
-import hot_sweet_ketchup from "@/assets/(13) Hot & Sweet Ketchup.png";
-import sriracha_mayo from "@/assets/(14) Sriracha Mayo.png";
+import andalouse from "@/assets/(01Andalouse.webp";
+import samurai from "@/assets/(02) Samurai.webp";
+import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.webp";
+import pink_tartare from "@/assets/(05)Pink Tartare.webp";
+import tomato_ketchup from "@/assets/(06) Tomato Ketchup.webp";
+import premium_mayo from "@/assets/(07) Premium Mayonnaise.webp";
+import truffle_aioli from "@/assets/(12) Truffle Aioli.webp";
+import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.webp";
+import sriracha_hot_chilli_sauce from "@/assets/(09) Sriracha Hot Chilli Sauce.webp";
+import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.webp";
+import ghost_sweet_chilli from "@/assets/(11) Ghost Sweet Chilli.webp";
+import cajun_mayo from "@/assets/(03) Cajun Mayo.webp";
+import hot_sweet_ketchup from "@/assets/(13) Hot & Sweet Ketchup.webp";
+import sriracha_mayo from "@/assets/(14) Sriracha Mayo.webp";
 
 // Drinks imports
-import deit_coke from "@/assets/(21) Diet coke.png";
-import coca_zero from "@/assets/(22) Coca zero.png";
-import coke_classic from "@/assets/(23) Coke classic.png";
+import deit_coke from "@/assets/(21) Diet coke.webp";
+import coca_zero from "@/assets/(22) Coca zero.webp";
+import coke_classic from "@/assets/(23) Coke classic.webp";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -52,9 +52,9 @@ function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("All Products");
 
   const menuItems = [
-    { category: "Fries", img: regularSize, title: "Regular Fries", desc: "", price: "" },
-    { category: "Fries", img: mediumSize, title: "Medium Fries", desc: "", price: "" },
-    { category: "Fries", img: largeSize, title: "Groot Fries", desc: "", price: "" },
+    { category: "Fries", img: regularSize, title: "Regular", desc: "", price: "" },
+    { category: "Fries", img: mediumSize, title: "Medium", desc: "", price: "" },
+    { category: "Fries", img: largeSize, title: "Groot", desc: "", price: "" },
     { category: "Frites Specials", img: dutchOriginal, title: "Dutch Originals", desc: "", price: "" },
     { category: "Frites Specials", img: dutchWar, title: "Dutch War Fries", desc: "", price: "" },
     { category: "Frites Specials", img: ghostBuster, title: "Ghost Busters", desc: "", price: "" },
@@ -98,12 +98,12 @@ function MenuPage() {
       </section>
 
       <section className="py-8 bg-cream border-b">
-        <div className="mx-auto max-w-7xl px-4 flex flex-wrap justify-center gap-4">
+        <div className="mx-auto max-w-7xl px-4 flex flex-wrap justify-center gap-2 sm:gap-4">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full font-bold transition ${activeCategory === cat ? "bg-brand text-white" : "bg-white hover:bg-brand/10"}`}
+              className={`px-5 py-2 rounded-full font-bold text-sm sm:text-base transition ${activeCategory === cat ? "bg-brand text-white" : "bg-white hover:bg-brand/10"}`}
             >
               {cat}
             </button>
@@ -111,19 +111,20 @@ function MenuPage() {
         </div>
       </section>
 
-      <section className="bg-cream py-16">
+      <section className="bg-cream py-10 sm:py-16">
         <div className="mx-auto max-w-7xl px-4">
           {activeCategory === "All Products" ? (
             groupedItems.map((group) => (
-              <div key={group.category} className="mb-16 last:mb-0">
+              <div key={group.category} className="mb-12 sm:mb-16 last:mb-0">
                 <h2 className="text-2xl font-bold text-brand mb-6 uppercase tracking-wider">{group.category}</h2>
-                <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {/* Single column on mobile (grid-cols-1), responsive layout up to desktop */}
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {group.items.map((it, i) => <MenuCard key={i} item={it} />)}
                 </div>
               </div>
             ))
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {menuItems.filter(item => item.category === activeCategory).map((it, i) => <MenuCard key={i} item={it} />)}
             </div>
           )}
@@ -136,8 +137,16 @@ function MenuPage() {
 function MenuCard({ item }: { item: any }) {
   return (
     <article className="group relative animate-fade-up overflow-hidden rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
-      <div className="aspect-[4/3] overflow-hidden bg-white p-4">
-        <img src={item.img} alt={item.title} className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+      {/* 
+        Key Fix: Using aspect-square on mobile with generous p-6 padding ensures 
+        circular tubs never hit the top/bottom/left/right container bounds.
+      */}
+      <div className="relative aspect-square sm:aspect-[4/3] w-full overflow-hidden bg-white p-6 sm:p-4 flex items-center justify-center">
+        <img 
+          src={item.img} 
+          alt={item.title} 
+          className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-105" 
+        />
       </div>
       <div className="p-5 flex flex-col items-center text-center">
         <div className="flex flex-col items-center gap-2">
