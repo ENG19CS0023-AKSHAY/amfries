@@ -22,14 +22,11 @@ import mediumSize from "@/assets/(24) Medium.jpg";
 import largeSize from "@/assets/(25) groot.jpg";
 
 // Left Grid Layout Custom Assets
-
-import amfriesReview from "@/assets/amfries1.jpg";
 import amfriesReview1 from "@/assets/amfries2.jpg";
 import amfriesReview2 from "@/assets/amfries3.png";
 import amfriesReview3 from "@/assets/amfries4.jpg";
 import amfriesReview4 from "@/assets/amfries5.jpg";
 import amfriesReview5 from "@/assets/amfries6.jpg";
-import amfriesReview6 from "@/assets/amfries7.jpg";
 import amfriesReview7 from "@/assets/amfries8.jpg";
 import amfriesReview8 from "@/assets/amfries9.jpg";
 import amfriesReview9 from "@/assets/amfries10.jpg";
@@ -39,7 +36,6 @@ import amfriesReview12 from "@/assets/amfries13.jpg";
 import amfriesReview13 from "@/assets/amfries14.jpg";
 import amfriesReview14 from "@/assets/amfries15.jpg";
 import amfriesReview15 from "@/assets/amfries16.jpg";
-import amfriesReview16 from "@/assets/amfries17.jpg";
 import amfriesReview17 from "@/assets/amfries18.jpg";
 import { LocationsGrid } from "@/components/LocationsGrid";
 import { useI18n } from "@/lib/i18n";
@@ -59,7 +55,7 @@ function Home() {
   const { t } = useI18n();
   const [sizeTier, setSizeTier] = useState<SizeKey>("medium");
   const [sliderVal, setSliderVal] = useState<number>(50);
-  
+
   const sauces = [
     { name: "Andalouse", visual: andalouse, tag: undefined as "spicy" | "signature" | undefined },
     { name: "Samurai", visual: samurai, tag: "spicy" as const },
@@ -78,58 +74,54 @@ function Home() {
   ];
 
   const sizingMap: Record<SizeKey, SizeConfig> = {
-    small: { 
-      name: "Regular", 
-      label: "Regular", 
+    small: {
+      name: "Regular",
+      label: "Regular",
       imgAsset: regularSize,
-      transformScale: "scale-[0.75]" 
+      transformScale: "scale-[0.75]"
     },
-    medium: { 
-      name: "Medium", 
-      label: "Medium", 
+    medium: {
+      name: "Medium",
+      label: "Medium",
       imgAsset: mediumSize,
-      transformScale: "scale-[1.125]" 
+      transformScale: "scale-[1.125]"
     },
-    large: { 
-      name: "Groot", 
-      label: "Groot / Large", 
+    large: {
+      name: "Groot",
+      label: "Groot / Large",
       imgAsset: largeSize,
-      transformScale: "scale-[1.50]" 
+      transformScale: "scale-[1.50]"
     },
   };
 
   const leftGridImages = [
-  amfriesReview,
-  amfriesReview1,
-  amfriesReview2,
-  amfriesReview3,
-  amfriesReview4,
-  amfriesReview5,
-  amfriesReview6,
-  amfriesReview7,
-  amfriesReview8,
-  amfriesReview9,
-  amfriesReview10,
-  amfriesReview11,
-  amfriesReview12,
-  amfriesReview13,
-  amfriesReview14,
-  amfriesReview15,
-  amfriesReview16,
-  amfriesReview17,
-];
+    amfriesReview1,
+    amfriesReview2,
+    amfriesReview3,
+    amfriesReview4,
+    amfriesReview5,
+    amfriesReview7,
+    amfriesReview8,
+    amfriesReview9,
+    amfriesReview10,
+    amfriesReview11,
+    amfriesReview12,
+    amfriesReview13,
+    amfriesReview14,
+    amfriesReview15,
+    amfriesReview17,
+  ];
 
-// 20 images (reuse first two)
-const collageImages = [
-  ...leftGridImages,
-  amfriesReview,
-  amfriesReview1,
-];
+  // 16 images total (allows for perfect 4x4 grid on tablet/desktop)
+  const collageImages = [
+    ...leftGridImages,
+    amfriesReview1,
+  ];
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseInt(e.target.value, 10);
     setSliderVal(val);
-    
+
     if (val < 35) setSizeTier("small");
     else if (val < 68) setSizeTier("medium");
     else setSizeTier("large");
@@ -203,11 +195,11 @@ const collageImages = [
             {t("hero.title")}
           </h1>
           <div className="mt-5 flex flex-wrap justify-center gap-3 sm:mt-6 md:mt-8">
-            <a 
-              href="https://www.instagram.com/amfries.in/?hl=en" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-outline inline-flex items-center text-sm font-bold tracking-wide"
+            <a
+              href="https://www.instagram.com/amfries.in/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline inline-flex items-center text-sm font-bold tracking-wide text-slate-700 border-slate-700 hover:bg-slate-50 hover:text-slate-900"
             >
               Our Videos
             </a>
@@ -218,7 +210,7 @@ const collageImages = [
       <LocationsGrid />
 
       {/* Sauce Carousel Section */}
-      <section id="assortment" className="overflow-hidden bg-[#f63d16] text-white py-20 md:py-28">
+      <section id="assortment" className="overflow-hidden bg-gradient-to-b from-[#f63d16] to-[#b32b0f] text-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl normal-case">
             Choose from 10+ sauces
@@ -232,16 +224,16 @@ const collageImages = [
           {/* Marquee Container */}
           <div className="animate-marquee gap-8 py-4">
             {[...sauces, ...sauces].map((sauce, i) => (
-              <div 
-                key={`${sauce.name}-${i}`} 
-                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-transparent p-2 text-white transition-all duration-300 hover:-translate-y-2"
+              <div
+                key={`${sauce.name}-${i}`}
+                className="flex w-40 shrink-0 flex-col items-center gap-3 sm:w-48 bg-transparent p-2 text-white"
               >
-                {/* Visual Frame - No cards, no background backdrops */}
+                {/* Visual Frame */}
                 <div className="relative aspect-square w-24 overflow-hidden sm:w-28 bg-transparent p-0">
                   <img
                     src={sauce.visual}
                     alt={sauce.name}
-                    className="h-full w-full object-contain transform hover:scale-110 transition-transform duration-300"
+                    className="h-full w-full object-contain"
                   />
                 </div>
 
@@ -250,7 +242,7 @@ const collageImages = [
                   <h3 className="text-sm font-bold tracking-wide line-clamp-2 px-1 text-white normal-case">
                     {sauce.name}
                   </h3>
-                  
+
                   {sauce.tag === 'spicy' && (
                     <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase text-yellow-300">
                       <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
@@ -260,7 +252,7 @@ const collageImages = [
                       Spicy
                     </span>
                   )}
-                  
+
                   {sauce.tag === 'signature' && (
                     <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold uppercase text-emerald-300">
                       <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24">
@@ -273,147 +265,132 @@ const collageImages = [
               </div>
             ))}
           </div>
-
-          {/* Edge Fade Gradients - Configured to blend seamlessly into the orange background */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#f63d16] to-transparent md:w-28" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#f63d16] to-transparent md:w-28" />
         </div>
       </section>
 
       {/* Sizer Section */}
-      <section className="bg-white text-gray-900 flex flex-col-reverse lg:flex-row items-stretch w-full overflow-hidden lg:min-h-[700px]">
-  {/* Left Side - Review Collage */}
-  <div className="w-full lg:w-1/2 flex">
+      <section className="bg-white text-gray-900 flex flex-col-reverse lg:flex-row items-stretch w-full overflow-hidden lg:min-h-[400px]">
 
-    {/* Mobile - 3 × 6 */}
-    <div className="grid grid-cols-3 sm:hidden w-full gap-0">
-      {collageImages.slice(0, 18).map((img, i) => (
-        <div key={i} className="relative aspect-square overflow-hidden">
-          <img
-            src={img}
-            alt="Amfries customer review"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-      ))}
-    </div>
+        {/* Left Side - Review Collage */}
+        <div className="w-full lg:w-1/2 flex content-start bg-gray-50/50">
 
-    {/* Tablet - 4 × 5 */}
-    <div className="hidden sm:grid lg:hidden grid-cols-4 w-full gap-0">
-      {collageImages.slice(0, 20).map((img, i) => (
-        <div key={i} className="relative aspect-square overflow-hidden">
-          <img
-            src={img}
-            alt="Amfries customer review"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-      ))}
-    </div>
-
-    {/* Desktop - 4 × 5 */}
-    <div className="hidden lg:grid grid-cols-4 grid-rows-5 w-full h-full gap-0">
-      {collageImages.slice(0, 20).map((img, i) => (
-        <div key={i} className="relative overflow-hidden">
-          <img
-            src={img}
-            alt="Amfries customer review"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-      ))}
-    </div>
-  </div>
-
-  {/* Right Side - Size Selector */}
-  <div className="w-full lg:w-1/2 flex items-center px-6 md:px-16 xl:px-24 py-12 md:py-20 bg-white">
-    <div className="w-full max-w-xl">
-      <h2 className="text-center lg:text-left text-[#000000] font-extrabold text-3xl md:text-4xl lg:text-5xl mb-12 tracking-tight normal-case">
-        Which size fits you?
-      </h2>
-
-      <div className="flex flex-row items-center justify-center lg:justify-start gap-12 md:gap-16 lg:gap-20 h-[400px]">
-        <div className="flex h-full items-center relative select-none">
-          <div className="flex items-center slider-box relative h-[340px]">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderVal}
-              onChange={handleSliderChange}
-              className="z-10"
-              style={
-                { "--slider-fill": `${sliderVal}%` } as React.CSSProperties
-              }
-            />
-
-            <div
-              className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-20 h-5 w-5 rounded-full bg-[#f63d16] ring-2 ring-white shadow-[0_2px_5px_rgba(246,61,22,0.4),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-150 ease-out"
-              style={{ bottom: `calc(${sliderVal}% - 10px)` }}
-            />
-          </div>
-
-          <div className="flex flex-col-reverse justify-between h-[340px] ml-6 pl-6 border-l-2 border-slate-100">
-            {(["small", "medium", "large"] as SizeKey[]).map((tier) => (
-              <button
-                key={tier}
-                type="button"
-                onClick={() => {
-                  setSizeTier(tier);
-                  setSliderVal(
-                    tier === "small" ? 15 : tier === "medium" ? 50 : 85
-                  );
-                }}
-                className="text-left group outline-none focus:outline-none py-2"
-              >
-                <span
-                  className={`text-xl block tracking-tight transition-all duration-200 ${
-                    sizeTier === tier
-                      ? "text-[#000000] font-black scale-102"
-                      : "text-gray-400 font-bold"
-                  }`}
-                >
-                  {sizingMap[tier].name}
-                </span>
-
-                <span
-                  className={`text-xs block tracking-wider uppercase transition-all duration-200 mt-0.5 ${
-                    sizeTier === tier
-                      ? "text-slate-500 font-semibold"
-                      : "text-gray-300 font-medium"
-                  }`}
-                >
-                  {sizingMap[tier].label}
-                </span>
-              </button>
+          {/* Mobile - 3 columns, Exactly 15 images (5 rows) to avoid empty spaces */}
+          <div className="grid grid-cols-3 sm:hidden w-full h-max gap-0">
+            {collageImages.slice(0, 15).map((img, i) => (
+              <div key={i} className="relative aspect-square overflow-hidden">
+                <img
+                  src={img}
+                  alt={`Amfries customer review ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
             ))}
           </div>
+
+          {/* Tablet & Desktop - 4 columns, Exactly 16 images (4 rows) */}
+          <div className="hidden sm:grid grid-cols-4 w-full h-max gap-0">
+            {collageImages.slice(0, 16).map((img, i) => (
+              <div key={i} className="relative aspect-square overflow-hidden">
+                <img
+                  src={img}
+                  alt={`Amfries customer review ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
         </div>
 
-        <div className="w-56 md:w-64 h-[340px] flex items-center justify-center overflow-visible">
-          <img
-            src={sizingMap[sizeTier].imgAsset}
-            alt={sizingMap[sizeTier].name}
-            className={`w-full h-full object-contain transition-transform duration-300 ease-out ${sizingMap[sizeTier].transformScale}`}
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        {/* Right Side - Size Selector */}
+        <div className="w-full lg:w-1/2 flex items-center px-6 md:px-16 xl:px-24 bg-white">
+          <div className="w-full max-w-xl">
+            <h2 className="text-center lg:text-left text-[#000000] font-extrabold text-3xl md:text-4xl lg:text-5xl mb-12 tracking-tight normal-case">
+              Which size fits you?
+            </h2>
 
-      {/* Reviews Banner */}
-      <a 
-        href="https://share.google/nt45dk2loT2kWOBNz" 
-        target="_blank" 
+            <div className="flex flex-row items-center justify-center lg:justify-start gap-12 md:gap-16 lg:gap-20 h-[400px]">
+              <div className="flex h-full items-center relative select-none">
+                <div className="flex items-center slider-box relative h-[340px]">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={sliderVal}
+                    onChange={handleSliderChange}
+                    className="z-10"
+                    style={
+                      { "--slider-fill": `${sliderVal}%` } as React.CSSProperties
+                    }
+                  />
+
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-20 h-5 w-5 rounded-full bg-[#f63d16] ring-2 ring-white shadow-[0_2px_5px_rgba(246,61,22,0.4),inset_0_1px_2px_rgba(255,255,255,0.3)] transition-all duration-150 ease-out"
+                    style={{ bottom: `calc(${sliderVal}% - 10px)` }}
+                  />
+                </div>
+
+                <div className="flex flex-col-reverse justify-between h-[340px] ml-6 pl-6 border-l-2 border-slate-100">
+                  {(["small", "medium", "large"] as SizeKey[]).map((tier) => (
+                    <button
+                      key={tier}
+                      type="button"
+                      onClick={() => {
+                        setSizeTier(tier);
+                        setSliderVal(
+                          tier === "small" ? 15 : tier === "medium" ? 50 : 85
+                        );
+                      }}
+                      className="text-left group outline-none focus:outline-none py-2"
+                    >
+                      <span
+                        className={`text-xl block tracking-tight transition-all duration-200 ${sizeTier === tier
+                          ? "text-[#000000] font-black scale-102"
+                          : "text-gray-400 font-bold"
+                          }`}
+                      >
+                        {sizingMap[tier].name}
+                      </span>
+
+                      <span
+                        className={`text-xs block tracking-wider uppercase transition-all duration-200 mt-0.5 ${sizeTier === tier
+                          ? "text-slate-500 font-semibold"
+                          : "text-gray-300 font-medium"
+                          }`}
+                      >
+                        {sizingMap[tier].label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-56 md:w-64 h-[340px] flex items-center justify-center overflow-visible">
+                <img
+                  src={sizingMap[sizeTier].imgAsset}
+                  alt={sizingMap[sizeTier].name}
+                  className={`w-full h-full object-contain transition-transform duration-300 ease-out ${sizingMap[sizeTier].transformScale}`}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Banner - UPDATED TO #f63d16 */}
+      <a
+        href="https://share.google/nt45dk2loT2kWOBNz"
+        target="_blank"
         rel="noopener noreferrer"
-        className="block bg-white hover:bg-slate-50 border-t border-b border-slate-100 transition-colors text-gray-800 py-10 px-4 sm:px-6 xl:px-0"
-        itemProp="review" 
-        itemScope 
+        className="block bg-[#f63d16] hover:bg-[#de3714] transition-colors text-white py-10 px-4 sm:px-6 xl:px-0"
+        itemProp="review"
+        itemScope
         itemType="https://schema.org/Review"
       >
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 max-w-7xl">
-          <div className="flex items-center space-x-1 px-4 py-2 rounded-full">
+
+          {/* Star Wrapper - added a subtle semi-transparent background to frame the stars nicely */}
+          <div className="flex items-center space-x-1 px-4 py-2 rounded-full bg-white/10">
             {[...Array(4)].map((_, i) => (
               <svg key={i} className="fill-[#fbbc05] text-[#fbbc05] h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -423,15 +400,16 @@ const collageImages = [
               <defs>
                 <linearGradient id="half-star">
                   <stop offset="50%" stopColor="#fbbc05" />
-                  <stop offset="50%" stopColor="#e2e8f0" />
+                  <stop offset="50%" stopColor="#b32b0f" /> {/* Changed to dark orange so the empty half doesn't look gray on the orange background */}
                 </linearGradient>
               </defs>
               <polygon fill="url(#half-star)" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </div>
 
-          <div className="flex items-center justify-center w-10 h-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-9 h-9">
+          {/* Google Icon Wrapper - Added a white circular background so the red part of the logo doesn't disappear */}
+          <div className="flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-sm p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-10 h-10">
               <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
               <path fill="#4285F4" d="M46.5 24c0-1.61-.15-3.16-.42-4.69H24v8.89h12.66c-.55 2.91-2.19 5.38-4.66 7.03l7.26 5.63C43.5 36.1 46.5 30.73 46.5 24z" />
               <path fill="#FBBC05" d="M10.54 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.98-6.19z" />
@@ -439,10 +417,11 @@ const collageImages = [
             </svg>
           </div>
 
-          <div className="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900 flex items-center space-x-2 group flex-row">
-            <span className="font-extrabold text-[#1a73e8]">75</span> 
-            <span className="text-gray-500 font-normal">Google Reviews</span>
-            <span className="text-xl text-[#1a73e8] inline-block transition-transform duration-150 transform group-hover:translate-x-1">→</span>
+          {/* Text Area - Adjusted text colors to pure white and white/90 */}
+          <div className="text-2xl sm:text-3xl font-medium tracking-tight text-white flex items-center space-x-2 group flex-row">
+            <span className="font-extrabold text-white">75</span>
+            <span className="text-white/90 font-normal">Google Reviews</span>
+            <span className="text-xl text-white inline-block transition-transform duration-150 transform group-hover:translate-x-1">→</span>
           </div>
         </div>
       </a>

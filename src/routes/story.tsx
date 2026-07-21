@@ -39,8 +39,8 @@ function StoryPage() {
           <div className="space-y-6">
             <h2 className="text-3xl font-bold">Fresh & Disruptive</h2>
             <p className="text-lg text-muted-foreground">
-              Amfries is a premium QSR venture bringing authentic Amsterdam-style fries to India. 
-              We are here to disrupt the snacking scene, offering 11mm fries double-fried to perfection, 
+              Amfries is a premium QSR venture bringing authentic Amsterdam-style fries to India.
+              We are here to disrupt the snacking scene, offering 11mm fries double-fried to perfection,
               served the Dutch way—in cones with signature sauces.
             </p>
             <p className="text-lg text-muted-foreground">
@@ -55,8 +55,8 @@ function StoryPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold mb-6">Brand Vision and Ambition</h2>
           <p className="text-lg text-muted-foreground">
-            Our mission is to create a brand synonymous with quality, authenticity, and innovation. 
-            We are here for the long haul, with a vision to scale to 100+ outlets across major cities, 
+            Our mission is to create a brand synonymous with quality, authenticity, and innovation.
+            We are here for the long haul, with a vision to scale to 100+ outlets across major cities,
             establishing Amfries as a national brand that sets new standards for quick-service snacks.
           </p>
         </div>
@@ -104,15 +104,15 @@ function StoryPage() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold mb-6">Brand Credibility and Growth Plans</h2>
           <p className="text-lg text-muted-foreground">
-            Backed by experienced food entrepreneurs and secured investment, we have built a robust 
-            backend including sourcing agreements and standardized processes. Our goal is to build 
+            Backed by experienced food entrepreneurs and secured investment, we have built a robust
+            backend including sourcing agreements and standardized processes. Our goal is to build
             a community of fry-lovers through aggressive growth and consistent quality across all outlets.
           </p>
         </div>
       </section>
 
       {/* Video Spotlight Section */}
-      <section className="bg-brand py-20 px-4 text-brand-foreground">
+      <section className="bg-gradient-to-b from-[#f63d16] to-[#b32b0f] py-20 px-4 text-brand-foreground">
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
             <img
@@ -121,8 +121,8 @@ function StoryPage() {
               className="mx-auto mb-6 h-24 w-24 md:mx-0"
               style={{ filter: "brightness(0) saturate(100%) invert(100%)" }}
             />
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">See the Fries Revolution</h2>
-            <p className="text-lg opacity-80">Experience the journey from Amsterdam to Bangalore. See how we redefine the snacking experience, one fry at a time.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">See the Fries Revolution</h2>
+            <p className="text-lg text-white/80">Experience the journey from Amsterdam to Bangalore. See how we redefine the snacking experience, one fry at a time.</p>
           </div>
 
           {/* Video Thumbnail / Trigger */}
@@ -139,7 +139,7 @@ function StoryPage() {
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-white/90 shadow-lg transition-transform group-hover:scale-110">
-                <Play className="h-7 w-7 md:h-8 md:w-8 text-brand fill-brand ml-1" />
+                <Play className="h-7 w-7 md:h-8 md:w-8 text-[#f63d16] fill-[#f63d16] ml-1" />
               </span>
             </div>
           </button>
