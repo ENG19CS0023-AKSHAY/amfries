@@ -10,7 +10,7 @@ const en: Dict = {
   "nav.menu": "Assortment",
   "nav.story": "Our story",
   "nav.franchise": "Franchise & Collaboration",
-  "hero.title": "THE BEST FRIES OF BANGALORE",
+  "hero.title": "THE BEST DUTCH FRIES OF BANGALORE",
   "hero.subtitle": "Freshly cut. Twice fried. The Belgian way — served hot in Koramangala.",
   "hero.cta1": "Find a location",
   "hero.cta2": "Our menu",

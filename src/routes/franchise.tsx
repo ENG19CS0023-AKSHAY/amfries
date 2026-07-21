@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero.png";
+import heroImg from "@/assets/hero.webp";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/franchise")({

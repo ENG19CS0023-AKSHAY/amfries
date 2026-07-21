@@ -26,7 +26,11 @@ export function Footer() {
           <h4 className="mb-3 text-sm font-bold uppercase tracking-wider">Visit us</h4>
           <p className="flex items-start gap-2 text-sm text-gray-600">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-black" />
-            80 Feet Road, 4th Block, Koramangala,<br />Bangalore, 560034
+            <span>
+              105, 1st A Cross, adjacent to Boho,<br />
+              KHB Colony, 5th Block, Koramangala,<br />
+              Bengaluru, Karnataka 560095
+            </span>
           </p>
         </div>
         <div>
