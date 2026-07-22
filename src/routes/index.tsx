@@ -1,20 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImg from "@/assets/hero.webp";
-import andalouse from "@/assets/(01Andalouse.webp";
-import samurai from "@/assets/(02) Samurai.webp";
-import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.webp";
-import pink_tartare from "@/assets/(05)Pink Tartare.webp";
-import tomato_ketchup from "@/assets/(06) Tomato Ketchup.webp";
-import premium_mayo from "@/assets/(07) Premium Mayonnaise.webp";
-import truffle_aioli from "@/assets/(12) Truffle Aioli.webp";
-import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.webp";
-import sriracha_hot_chilli_sauce from "@/assets/(09) Sriracha Hot Chilli Sauce.webp";
-import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.webp";
-import ghost_sweet_chilli from "@/assets/(11) Ghost Sweet Chilli.webp";
-import cajun_mayo from "@/assets/(03) Cajun Mayo.webp";
-import hot_sweet_ketchup from "@/assets/(13) Hot & Sweet Ketchup.webp";
-import sriracha_mayo from "@/assets/(14) Sriracha Mayo.webp";
+import andalouse from "@/assets/14-Andalouse.webp";
+import samurai from "@/assets/13-Samurai.webp";
+import mango_chilli_aioli from "@/assets/12-Mango Chilli Aioli.webp";
+import pink_tartare from "@/assets/11-Pink Tartar.webp";
+import tomato_ketchup from "@/assets/10-Ketchup.webp";
+import premium_mayo from "@/assets/9-Premium Mayo.webp";
+import truffle_aioli from "@/assets/2-Truffle Aioli.webp";
+import peanut_satay_sauce from "@/assets/8-Peanut Satay.webp";
+import sriracha_hot_chilli_sauce from "@/assets/7-Sriracha.webp";
+import chilli_garlic_mayo from "@/assets/6-Chilli Garlic Mayo.webp";
+import ghost_sweet_chilli from "@/assets/5-Ghost Sweet Chilli.webp";
+import cajun_mayo from "@/assets/4-Frietsaus.webp";
+import hot_sweet_ketchup from "@/assets/3-Hot&Sweet Ketchup.webp";
+import sriracha_mayo from "@/assets/1-Vegan Sriracha Mayo.webp";
 
 // Fry Size Asset Imports
 import regularSize from "@/assets/(23) Regular.webp";
@@ -137,7 +137,6 @@ function Home() {
         .animate-marquee {
           display: flex;
           width: max-content;
-          /* Speed reduced from 75s to 30s to make carousel faster */
           animation: marquee 30s linear infinite;
         }
         .animate-marquee:hover {
@@ -149,7 +148,6 @@ function Home() {
           appearance: none;
           width: 8px;
           height: 340px;
-          /* CSS linear gradient fill calculation for vertical slider track matching layout direction */
           background: linear-gradient(to top, #f63d16 var(--slider-fill), #e2e8f0 var(--slider-fill));
           border-radius: 99px;
           outline: none;
@@ -158,20 +156,24 @@ function Home() {
           cursor: pointer;
         }
 
+        /* FIX FOR IOS SAFARI: Add -webkit-appearance: none AND background: transparent explicitly */
         .slider-box input[type="range"]::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
+          -webkit-appearance: none !important;
+          appearance: none !important;
           width: 56px;
           height: 56px;
           border-radius: 50%;
           background: transparent;
+          border: none;
           cursor: grab;
-         }
+        }
+
         .slider-box input[type="range"]::-webkit-slider-thumb:active {
           cursor: grabbing;
         }
+
         .slider-box input[type="range"]::-moz-range-thumb {
-          width: 10px;
+          width: 56px;
           height: 56px;
           border-radius: 50%;
           background: transparent;
@@ -227,21 +229,23 @@ function Home() {
             {[...sauces, ...sauces].map((sauce, i) => (
               <div
                 key={`${sauce.name}-${i}`}
-                /* Increased item width from w-40 sm:w-48 to w-52 sm:w-60 */
-                className="flex w-52 shrink-0 flex-col items-center gap-3 sm:w-60 bg-transparent p-2 text-white"
+                /* Expanded overall width to w-60 / sm:w-72 to accommodate larger sauce images */
+                className="flex w-60 shrink-0 flex-col items-center gap-3 sm:w-72 bg-transparent p-0 text-white"
               >
-                {/* Visual Frame - Increased width from w-24 sm:w-28 to w-36 sm:w-44 */}
-                <div className="relative aspect-square w-36 overflow-hidden sm:w-44 bg-transparent p-0">
+                {/* 
+                  Visual Container - Scaled up size to w-48 sm:w-56 with zero borders or backgrounds
+                */}
+                <div className="relative aspect-square w-48 sm:w-56 p-0 bg-transparent flex items-center justify-center">
                   <img
                     src={sauce.visual}
                     alt={sauce.name}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
                   />
                 </div>
 
                 {/* Info Text Area Directly Below */}
                 <div className="text-center min-h-[4rem] flex flex-col items-center justify-start mt-2">
-                  <h3 className="text-sm font-bold tracking-wide line-clamp-2 px-1 text-white normal-case">
+                  <h3 className="text-base font-bold tracking-wide line-clamp-2 px-1 text-white normal-case">
                     {sauce.name}
                   </h3>
 
@@ -379,7 +383,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Reviews Banner - UPDATED TO #f63d16 */}
+      {/* Reviews Banner */}
       <a
         href="https://share.google/nt45dk2loT2kWOBNz"
         target="_blank"
@@ -391,7 +395,6 @@ function Home() {
       >
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 max-w-7xl">
 
-          {/* Star Wrapper - added a subtle semi-transparent background to frame the stars nicely */}
           <div className="flex items-center space-x-1 px-4 py-2 rounded-full bg-white/10">
             {[...Array(4)].map((_, i) => (
               <svg key={i} className="fill-[#fbbc05] text-[#fbbc05] h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -402,14 +405,13 @@ function Home() {
               <defs>
                 <linearGradient id="half-star">
                   <stop offset="50%" stopColor="#fbbc05" />
-                  <stop offset="50%" stopColor="#b32b0f" /> {/* Changed to dark orange so the empty half doesn't look gray on the orange background */}
+                  <stop offset="50%" stopColor="#b32b0f" />
                 </linearGradient>
               </defs>
               <polygon fill="url(#half-star)" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </div>
 
-          {/* Google Icon Wrapper - Added a white circular background so the red part of the logo doesn't disappear */}
           <div className="flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-sm p-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-10 h-10">
               <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
@@ -419,7 +421,6 @@ function Home() {
             </svg>
           </div>
 
-          {/* Text Area - Adjusted text colors to pure white and white/90 */}
           <div className="text-2xl sm:text-3xl font-medium tracking-tight text-white flex items-center space-x-2 group flex-row">
             <span className="font-extrabold text-white">75</span>
             <span className="text-white/90 font-normal">Google Reviews</span>
