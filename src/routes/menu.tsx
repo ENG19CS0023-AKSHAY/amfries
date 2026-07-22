@@ -18,15 +18,15 @@ import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.webp";
 
 // Sauce imports
 import andalouse from "@/assets/14-Andalouse.webp";
-import samurai from "@/assets/13-Samurai.webp";
-import mango_chilli_aioli from "@/assets/12-Mango Chilli Aioli.webp";
+import samurai from "@/assets/(02) Samurai.webp";
+import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.webp";
 import pink_tartare from "@/assets/11-Pink Tartar.webp";
 import tomato_ketchup from "@/assets/10-Ketchup.webp";
 import premium_mayo from "@/assets/9-Premium Mayo.webp";
 import truffle_aioli from "@/assets/2-Truffle Aioli.webp";
-import peanut_satay_sauce from "@/assets/8-Peanut Satay.webp";
+import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.webp";
 import sriracha_hot_chilli_sauce from "@/assets/7-Sriracha.webp";
-import chilli_garlic_mayo from "@/assets/6-Chilli Garlic Mayo.webp";
+import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.webp";
 import ghost_sweet_chilli from "@/assets/5-Ghost Sweet Chilli.webp";
 import cajun_mayo from "@/assets/4-Frietsaus.webp";
 import hot_sweet_ketchup from "@/assets/3-Hot&Sweet Ketchup.webp";
@@ -47,11 +47,20 @@ export const Route = createFileRoute("/menu")({
   component: MenuPage,
 });
 
+interface MenuItem {
+  category: string;
+  img: string;
+  title: string;
+  desc?: string;
+  price?: string;
+  scale?: string; // Optional scale property (e.g. "scale-[0.75]", "scale-110", etc.)
+}
+
 function MenuPage() {
   const { t } = useI18n();
   const [activeCategory, setActiveCategory] = useState("All Products");
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { category: "Fries", img: regularSize, title: "Regular", desc: "", price: "" },
     { category: "Fries", img: mediumSize, title: "Medium", desc: "", price: "" },
     { category: "Fries", img: largeSize, title: "Groot", desc: "", price: "" },
@@ -62,15 +71,15 @@ function MenuPage() {
     { category: "Frites Specials", img: truffle, title: "Truffle Luxe", desc: "", price: "" },
     { category: "Frites Specials", img: oldAmsterdam, title: "Old Amsterdam Cheese Fries", desc: "", price: "" },
     { category: "Sauces", img: andalouse, title: "Andalouse", desc: "", price: "" },
-    { category: "Sauces", img: samurai, title: "Samurai", desc: "", price: "" },
-    { category: "Sauces", img: mango_chilli_aioli, title: "Mango Chilli Aioli", desc: "", price: "" },
+    { category: "Sauces", img: samurai, title: "Samurai", desc: "", price: "", scale: "scale-[0.75]" },
+    { category: "Sauces", img: mango_chilli_aioli, title: "Mango Chilli Aioli", desc: "", price: "", scale: "scale-[0.75]" },
     { category: "Sauces", img: pink_tartare, title: "Pink Tartare", desc: "", price: "" },
     { category: "Sauces", img: tomato_ketchup, title: "Ketchup", desc: "", price: "" },
     { category: "Sauces", img: premium_mayo, title: "Premium Mayo", desc: "", price: "" },
     { category: "Sauces", img: truffle_aioli, title: "Truffle Aioli", desc: "", price: "" },
-    { category: "Sauces", img: peanut_satay_sauce, title: "Peanut Satay", desc: "", price: "" },
+    { category: "Sauces", img: peanut_satay_sauce, title: "Peanut Satay", desc: "", price: "", scale: "scale-[0.75]" },
     { category: "Sauces", img: sriracha_hot_chilli_sauce, title: "Sriracha", desc: "", price: "" },
-    { category: "Sauces", img: chilli_garlic_mayo, title: "Chilli Garlic Mayo", desc: "", price: "" },
+    { category: "Sauces", img: chilli_garlic_mayo, title: "Chilli Garlic Mayo", desc: "", price: "", scale: "scale-[0.75]" },
     { category: "Sauces", img: ghost_sweet_chilli, title: "Ghost Sweet Chilli", desc: "", price: "" },
     { category: "Sauces", img: cajun_mayo, title: "Cajun Mayo", desc: "", price: "" },
     { category: "Sauces", img: hot_sweet_ketchup, title: "Hot & Sweet Ketchup", desc: "", price: "" },
@@ -81,15 +90,21 @@ function MenuPage() {
   ];
 
   const categories = ["All Products", "Fries", "Frites Specials", "Sauces", "Drinks"];
-  const groupedItems = categories.slice(1).map(cat => ({
+  const groupedItems = categories.slice(1).map((cat) => ({
     category: cat,
-    items: menuItems.filter(item => item.category === cat)
+    items: menuItems.filter((item) => item.category === cat),
   }));
 
   return (
     <>
       <section className="relative flex h-[331.2px] items-center justify-center overflow-hidden bg-brand text-brand-foreground md:h-[475px]">
-        <img src={heroImg} alt="Amfries counter" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover opacity-90 blur-[2.5px]" />
+        <img
+          src={heroImg}
+          alt="Amfries counter"
+          width={1920}
+          height={1080}
+          className="absolute inset-0 h-full w-full object-cover opacity-90 blur-[2.5px]"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
         <div className="animate-fade-up relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl">{t("menu.title")}</h1>
@@ -103,7 +118,9 @@ function MenuPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full font-bold text-sm sm:text-base transition ${activeCategory === cat ? "bg-brand text-white" : "bg-white hover:bg-brand/10"}`}
+              className={`px-5 py-2 rounded-full font-bold text-sm sm:text-base transition ${
+                activeCategory === cat ? "bg-brand text-white" : "bg-white hover:bg-brand/10"
+              }`}
             >
               {cat}
             </button>
@@ -118,13 +135,19 @@ function MenuPage() {
               <div key={group.category} className="mb-12 sm:mb-16 last:mb-0">
                 <h2 className="text-2xl font-bold text-brand mb-6 uppercase tracking-wider">{group.category}</h2>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                  {group.items.map((it, i) => <MenuCard key={i} item={it} />)}
+                  {group.items.map((it, i) => (
+                    <MenuCard key={i} item={it} />
+                  ))}
                 </div>
               </div>
             ))
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {menuItems.filter(item => item.category === activeCategory).map((it, i) => <MenuCard key={i} item={it} />)}
+              {menuItems
+                .filter((item) => item.category === activeCategory)
+                .map((it, i) => (
+                  <MenuCard key={i} item={it} />
+                ))}
             </div>
           )}
         </div>
@@ -133,27 +156,34 @@ function MenuPage() {
   );
 }
 
-function MenuCard({ item }: { item: any }) {
+function MenuCard({ item }: { item: MenuItem }) {
   const isSauce = item.category === "Sauces";
+
+  const imageElement = (
+    <img
+      src={item.img}
+      alt={item.title}
+      className="h-full w-full max-h-full max-w-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
+    />
+  );
 
   return (
     <article className="group relative animate-fade-up overflow-hidden rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30 flex flex-col h-full">
-      {/* 
-        For Sauces: Use max space (aspect-square with ultra-tight p-1.5 padding)
-        For Other items: Keep standard p-6 padding so images balance nicely.
-      */}
-      <div 
+      <div
         className={`relative w-full overflow-hidden bg-white flex items-center justify-center ${
-          isSauce 
-            ? "aspect-square p-1.5 sm:p-2" 
+          isSauce
+            ? "aspect-square p-1.5 sm:p-2"
             : "aspect-square sm:aspect-[4/3] p-6 sm:p-4"
         }`}
       >
-        <img 
-          src={item.img} 
-          alt={item.title} 
-          className="h-full w-full max-h-full max-w-full object-contain object-center transition-transform duration-500 group-hover:scale-105" 
-        />
+        {/* Only wrap in a scaled div if custom scale is specified */}
+        {item.scale ? (
+          <div className={`h-full w-full flex items-center justify-center ${item.scale}`}>
+            {imageElement}
+          </div>
+        ) : (
+          imageElement
+        )}
       </div>
 
       <div className="p-5 flex flex-col items-center text-center mt-auto">

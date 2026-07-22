@@ -2,15 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImg from "@/assets/hero.webp";
 import andalouse from "@/assets/14-Andalouse.webp";
-import samurai from "@/assets/13-Samurai.webp";
-import mango_chilli_aioli from "@/assets/12-Mango Chilli Aioli.webp";
+import samurai from "@/assets/(02) Samurai.webp";
+import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.webp";
 import pink_tartare from "@/assets/11-Pink Tartar.webp";
 import tomato_ketchup from "@/assets/10-Ketchup.webp";
 import premium_mayo from "@/assets/9-Premium Mayo.webp";
 import truffle_aioli from "@/assets/2-Truffle Aioli.webp";
-import peanut_satay_sauce from "@/assets/8-Peanut Satay.webp";
+import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.webp";
 import sriracha_hot_chilli_sauce from "@/assets/7-Sriracha.webp";
-import chilli_garlic_mayo from "@/assets/6-Chilli Garlic Mayo.webp";
+import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.webp";
 import ghost_sweet_chilli from "@/assets/5-Ghost Sweet Chilli.webp";
 import cajun_mayo from "@/assets/4-Frietsaus.webp";
 import hot_sweet_ketchup from "@/assets/3-Hot&Sweet Ketchup.webp";
@@ -51,26 +51,33 @@ interface SizeConfig {
   transformScale: string;
 }
 
+interface SauceConfig {
+  name: string;
+  visual: string;
+  tag?: "spicy" | "signature";
+  scale?: string; // Optional scale override for images with extra transparent padding
+}
+
 function Home() {
   const { t } = useI18n();
   const [sizeTier, setSizeTier] = useState<SizeKey>("medium");
   const [sliderVal, setSliderVal] = useState<number>(50);
 
-  const sauces = [
-    { name: "Andalouse", visual: andalouse, tag: undefined as "spicy" | "signature" | undefined },
-    { name: "Samurai", visual: samurai, tag: undefined },
-    { name: "Mango Chilli Aioli", visual: mango_chilli_aioli, tag: undefined },
-    { name: "Pink Tartare", visual: pink_tartare, tag: undefined },
-    { name: "Ketchup", visual: tomato_ketchup, tag: undefined },
-    { name: "Premium Mayo", visual: premium_mayo, tag: undefined },
-    { name: "Truffle Aioli", visual: truffle_aioli, tag: undefined },
-    { name: "Peanut Satay", visual: peanut_satay_sauce, tag: undefined },
-    { name: "Sriracha", visual: sriracha_hot_chilli_sauce, tag: undefined },
-    { name: "Chilli Garlic Mayo", visual: chilli_garlic_mayo, tag: undefined },
-    { name: "Ghost Sweet Chilli", visual: ghost_sweet_chilli, tag: undefined },
-    { name: "Cajun Mayo", visual: cajun_mayo, tag: undefined },
-    { name: "Hot & Sweet Ketchup", visual: hot_sweet_ketchup, tag: undefined },
-    { name: "Vegan Sriracha Mayo", visual: sriracha_mayo, tag: undefined },
+  const sauces: SauceConfig[] = [
+    { name: "Andalouse", visual: andalouse },
+    { name: "Samurai", visual: samurai, scale: "scale-[0.75]" },
+    { name: "Mango Chilli Aioli", visual: mango_chilli_aioli, scale: "scale-[0.75]" },
+    { name: "Pink Tartare", visual: pink_tartare },
+    { name: "Ketchup", visual: tomato_ketchup },
+    { name: "Premium Mayo", visual: premium_mayo },
+    { name: "Truffle Aioli", visual: truffle_aioli },
+    { name: "Peanut Satay", visual: peanut_satay_sauce, scale: "scale-[0.75]" },
+    { name: "Sriracha", visual: sriracha_hot_chilli_sauce },
+    { name: "Chilli Garlic Mayo", visual: chilli_garlic_mayo, scale: "scale-[0.75]" },
+    { name: "Ghost Sweet Chilli", visual: ghost_sweet_chilli},
+    { name: "Cajun Mayo", visual: cajun_mayo },
+    { name: "Hot & Sweet Ketchup", visual: hot_sweet_ketchup },
+    { name: "Vegan Sriracha Mayo", visual: sriracha_mayo },
   ];
 
   const sizingMap: Record<SizeKey, SizeConfig> = {
@@ -137,7 +144,7 @@ function Home() {
         .animate-marquee {
           display: flex;
           width: max-content;
-          animation: marquee 30s linear infinite;
+          animation: marquee 50s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -156,15 +163,17 @@ function Home() {
           cursor: pointer;
         }
 
-        /* FIX FOR IOS SAFARI: Add -webkit-appearance: none AND background: transparent explicitly */
+        /* HARD iOS SAFARI FIX: Completely strips natural thumb rendering */
         .slider-box input[type="range"]::-webkit-slider-thumb {
           -webkit-appearance: none !important;
           appearance: none !important;
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          background: transparent;
-          border: none;
+          width: 48px !important;
+          height: 48px !important;
+          border-radius: 50% !important;
+          background: transparent !important;
+          border: 0 !important;
+          outline: none !important;
+          box-shadow: none !important;
           cursor: grab;
         }
 
@@ -173,11 +182,12 @@ function Home() {
         }
 
         .slider-box input[type="range"]::-moz-range-thumb {
-          width: 56px;
-          height: 56px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
           background: transparent;
           border: none;
+          box-shadow: none;
           cursor: grab;
         }
       `}</style>
@@ -229,21 +239,16 @@ function Home() {
             {[...sauces, ...sauces].map((sauce, i) => (
               <div
                 key={`${sauce.name}-${i}`}
-                /* Expanded overall width to w-60 / sm:w-72 to accommodate larger sauce images */
                 className="flex w-60 shrink-0 flex-col items-center gap-3 sm:w-72 bg-transparent p-0 text-white"
               >
-                {/* 
-                  Visual Container - Scaled up size to w-48 sm:w-56 with zero borders or backgrounds
-                */}
-                <div className="relative aspect-square w-48 sm:w-56 p-0 bg-transparent flex items-center justify-center">
+                <div className="relative aspect-square w-48 sm:w-56 p-0 bg-transparent flex items-center justify-center overflow-visible">
                   <img
                     src={sauce.visual}
                     alt={sauce.name}
-                    className="h-full w-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
+                    className={`h-full w-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.25)] transition-transform duration-200 ${sauce.scale || ""}`}
                   />
                 </div>
 
-                {/* Info Text Area Directly Below */}
                 <div className="text-center min-h-[4rem] flex flex-col items-center justify-start mt-2">
                   <h3 className="text-base font-bold tracking-wide line-clamp-2 px-1 text-white normal-case">
                     {sauce.name}
@@ -280,7 +285,7 @@ function Home() {
         {/* Left Side - Review Collage */}
         <div className="w-full lg:w-1/2 flex content-start bg-gray-50/50">
 
-          {/* Mobile - 3 columns, Exactly 15 images (5 rows) to avoid empty spaces */}
+          {/* Mobile - 3 columns, Exactly 15 images (5 rows) */}
           <div className="grid grid-cols-3 sm:hidden w-full h-max gap-0">
             {collageImages.slice(0, 15).map((img, i) => (
               <div key={i} className="relative aspect-square overflow-hidden">
