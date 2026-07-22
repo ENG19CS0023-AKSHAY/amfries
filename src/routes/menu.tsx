@@ -17,20 +17,20 @@ import truffle from "@/assets/(31)Truffle Luxe.webp";
 import oldAmsterdam from "@/assets/(32) Old Amsterdam Cheese Fries.webp";
 
 // Sauce imports
-import andalouse from "@/assets/(01Andalouse.webp";
-import samurai from "@/assets/(02) Samurai.webp";
-import mango_chilli_aioli from "@/assets/(04) Mango Chilli Aioli.webp";
-import pink_tartare from "@/assets/(05)Pink Tartare.webp";
-import tomato_ketchup from "@/assets/(06) Tomato Ketchup.webp";
-import premium_mayo from "@/assets/(07) Premium Mayonnaise.webp";
-import truffle_aioli from "@/assets/(12) Truffle Aioli.webp";
-import peanut_satay_sauce from "@/assets/(08) Peanut Satay Sauce.webp";
-import sriracha_hot_chilli_sauce from "@/assets/(09) Sriracha Hot Chilli Sauce.webp";
-import chilli_garlic_mayo from "@/assets/(10) Chilli Garlic Mayo.webp";
-import ghost_sweet_chilli from "@/assets/(11) Ghost Sweet Chilli.webp";
-import cajun_mayo from "@/assets/(03) Cajun Mayo.webp";
-import hot_sweet_ketchup from "@/assets/(13) Hot & Sweet Ketchup.webp";
-import sriracha_mayo from "@/assets/(14) Sriracha Mayo.webp";
+import andalouse from "@/assets/14-Andalouse.webp";
+import samurai from "@/assets/13-Samurai.webp";
+import mango_chilli_aioli from "@/assets/12-Mango Chilli Aioli.webp";
+import pink_tartare from "@/assets/11-Pink Tartar.webp";
+import tomato_ketchup from "@/assets/10-Ketchup.webp";
+import premium_mayo from "@/assets/9-Premium Mayo.webp";
+import truffle_aioli from "@/assets/2-Truffle Aioli.webp";
+import peanut_satay_sauce from "@/assets/8-Peanut Satay.webp";
+import sriracha_hot_chilli_sauce from "@/assets/7-Sriracha.webp";
+import chilli_garlic_mayo from "@/assets/6-Chilli Garlic Mayo.webp";
+import ghost_sweet_chilli from "@/assets/5-Ghost Sweet Chilli.webp";
+import cajun_mayo from "@/assets/4-Frietsaus.webp";
+import hot_sweet_ketchup from "@/assets/3-Hot&Sweet Ketchup.webp";
+import sriracha_mayo from "@/assets/1-Vegan Sriracha Mayo.webp";
 
 // Drinks imports
 import deit_coke from "@/assets/(21) Diet coke.webp";
@@ -117,7 +117,6 @@ function MenuPage() {
             groupedItems.map((group) => (
               <div key={group.category} className="mb-12 sm:mb-16 last:mb-0">
                 <h2 className="text-2xl font-bold text-brand mb-6 uppercase tracking-wider">{group.category}</h2>
-                {/* Single column on mobile (grid-cols-1), responsive layout up to desktop */}
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {group.items.map((it, i) => <MenuCard key={i} item={it} />)}
                 </div>
@@ -135,23 +134,36 @@ function MenuPage() {
 }
 
 function MenuCard({ item }: { item: any }) {
+  const isSauce = item.category === "Sauces";
+
   return (
-    <article className="group relative animate-fade-up overflow-hidden rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30">
+    <article className="group relative animate-fade-up overflow-hidden rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(246,61,22,0.15)] hover:border-brand/30 flex flex-col h-full">
       {/* 
-        Key Fix: Using aspect-square on mobile with generous p-6 padding ensures 
-        circular tubs never hit the top/bottom/left/right container bounds.
+        For Sauces: Use max space (aspect-square with ultra-tight p-1.5 padding)
+        For Other items: Keep standard p-6 padding so images balance nicely.
       */}
-      <div className="relative aspect-square sm:aspect-[4/3] w-full overflow-hidden bg-white p-6 sm:p-4 flex items-center justify-center">
+      <div 
+        className={`relative w-full overflow-hidden bg-white flex items-center justify-center ${
+          isSauce 
+            ? "aspect-square p-1.5 sm:p-2" 
+            : "aspect-square sm:aspect-[4/3] p-6 sm:p-4"
+        }`}
+      >
         <img 
           src={item.img} 
           alt={item.title} 
-          className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-105" 
+          className="h-full w-full max-h-full max-w-full object-contain object-center transition-transform duration-500 group-hover:scale-105" 
         />
       </div>
-      <div className="p-5 flex flex-col items-center text-center">
+
+      <div className="p-5 flex flex-col items-center text-center mt-auto">
         <div className="flex flex-col items-center gap-2">
           <h3 className="text-lg font-bold leading-tight text-foreground">{item.title}</h3>
-          {item.price && <span className="inline-block w-fit rounded-full bg-brand/10 px-3 py-1 text-xs font-bold text-brand">{item.price}</span>}
+          {item.price && (
+            <span className="inline-block w-fit rounded-full bg-brand/10 px-3 py-1 text-xs font-bold text-brand">
+              {item.price}
+            </span>
+          )}
         </div>
         {item.desc && <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{item.desc}</p>}
       </div>
