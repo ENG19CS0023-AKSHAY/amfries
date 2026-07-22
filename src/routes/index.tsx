@@ -137,7 +137,7 @@ function Home() {
         .animate-marquee {
           display: flex;
           width: max-content;
-          animation: marquee 30s linear infinite;
+          animation: marquee 50s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -156,15 +156,17 @@ function Home() {
           cursor: pointer;
         }
 
-        /* FIX FOR IOS SAFARI: Add -webkit-appearance: none AND background: transparent explicitly */
+        /* HARD iOS SAFARI FIX: Completely strips natural thumb rendering */
         .slider-box input[type="range"]::-webkit-slider-thumb {
           -webkit-appearance: none !important;
           appearance: none !important;
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          background: transparent;
-          border: none;
+          width: 48px !important;
+          height: 48px !important;
+          border-radius: 50% !important;
+          background: transparent !important;
+          border: 0 !important;
+          outline: none !important;
+          box-shadow: none !important;
           cursor: grab;
         }
 
@@ -173,11 +175,12 @@ function Home() {
         }
 
         .slider-box input[type="range"]::-moz-range-thumb {
-          width: 56px;
-          height: 56px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
           background: transparent;
           border: none;
+          box-shadow: none;
           cursor: grab;
         }
       `}</style>
@@ -229,12 +232,8 @@ function Home() {
             {[...sauces, ...sauces].map((sauce, i) => (
               <div
                 key={`${sauce.name}-${i}`}
-                /* Expanded overall width to w-60 / sm:w-72 to accommodate larger sauce images */
                 className="flex w-60 shrink-0 flex-col items-center gap-3 sm:w-72 bg-transparent p-0 text-white"
               >
-                {/* 
-                  Visual Container - Scaled up size to w-48 sm:w-56 with zero borders or backgrounds
-                */}
                 <div className="relative aspect-square w-48 sm:w-56 p-0 bg-transparent flex items-center justify-center">
                   <img
                     src={sauce.visual}
@@ -243,7 +242,6 @@ function Home() {
                   />
                 </div>
 
-                {/* Info Text Area Directly Below */}
                 <div className="text-center min-h-[4rem] flex flex-col items-center justify-start mt-2">
                   <h3 className="text-base font-bold tracking-wide line-clamp-2 px-1 text-white normal-case">
                     {sauce.name}
@@ -280,7 +278,7 @@ function Home() {
         {/* Left Side - Review Collage */}
         <div className="w-full lg:w-1/2 flex content-start bg-gray-50/50">
 
-          {/* Mobile - 3 columns, Exactly 15 images (5 rows) to avoid empty spaces */}
+          {/* Mobile - 3 columns, Exactly 15 images (5 rows) */}
           <div className="grid grid-cols-3 sm:hidden w-full h-max gap-0">
             {collageImages.slice(0, 15).map((img, i) => (
               <div key={i} className="relative aspect-square overflow-hidden">
