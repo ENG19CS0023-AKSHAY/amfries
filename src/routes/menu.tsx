@@ -41,7 +41,7 @@ export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
       { title: "Assortment — Amfries" },
-      { name: "description", content: "Discover our menu: classic Belgian fries, loaded fries, crispy chicken and sauces." },
+      { name: "description", content: "Discover our menu: classic Dutch fries, loaded fries, crispy chicken and sauces." },
     ],
   }),
   component: MenuPage,
